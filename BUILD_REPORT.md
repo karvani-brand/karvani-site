@@ -62,3 +62,44 @@ Live — polled after push:
 ```
 LIVE after ~75s: order-bar markup + orderTotal() in app.js served
 ```
+
+---
+
+## Phase 4 — Testimonials swipe row (commit fd81b81)
+
+**Built:** The design's `flex-basis: calc(33.333% - 7px)` squeezes each quote card to ~100px at 360px viewports and never overflows, so the scroll-snap the design specifies never engages. Added `min-width: 210px` to `.testimonial-card` — cards stay readable and the row swipes with x-mandatory snap.
+
+**Verification:**
+
+Layout arithmetic (row = 3 cards + 2×10px gaps vs visible width inside 20px section padding):
+```
+360px viewport: card=210px, row=650px vs visible 320px -> SWIPES (overflow 330px)
+390px viewport: card=210px, row=650px vs visible 350px -> SWIPES (overflow 300px)
+430px viewport: card=210px, row=650px vs visible 390px -> SWIPES (overflow 260px)
+560px viewport: card=210px, row=650px vs visible 520px -> SWIPES (overflow 130px)
+```
+
+Live — polled after push:
+```
+LIVE after ~60s: testimonial min-width 210px served in style.css
+```
+
+---
+
+## Phase 5 — CONFIG wiring: UPI, forms, WhatsApp CTA (commit PENDING)
+
+**Built:** `app.js` now injects CONFIG into the static sections on load: all `[data-config]` spans (promo code ×2, UPI ID, payee name, footer WhatsApp number), the general "Message Us on WhatsApp" CTA (prefilled wa.me link with promo code), and the feedback / Google Form links. Form links keep `href="#"` while their CONFIG values are `[PLACEHOLDER]`-style — no invented URLs; filling `CONFIG.FEEDBACK_FORM_URL` / `CONFIG.GOOGLE_FORM_URL` / `CONFIG.UPI_ID` and redeploying is the entire launch procedure.
+
+**Verification:**
+
+```
+node --check app.js -> syntax OK
+node test/pricing.test.js -> All pricing checks passed.
+data-config hooks in index.html (all mapped in app.js):
+      1 data-config="payeeName"
+      2 data-config="promoCode"
+      1 data-config="upiId"
+      1 data-config="whatsappDisplay"
+```
+
+Live: LIVE_CHECK_PENDING
