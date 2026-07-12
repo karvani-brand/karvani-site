@@ -373,6 +373,18 @@ a:hover { color: var(--link-hover); }
   color: var(--card-bg);
 }
 
+/* Small phones: keep count + send button on one row inside the sticky bar */
+@media (max-width: 380px) {
+  .btn-send {
+    font-size: 13px;
+    padding: 12px 14px;
+  }
+  .order-bar {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+}
+
 /* ---- Testimonials ---- */
 
 .testimonials {
@@ -385,6 +397,7 @@ a:hover { color: var(--link-hover); }
   gap: 10px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
+  scroll-padding-left: 20px; /* snapped cards align with the section padding */
   padding-bottom: 4px;
   margin: 0 -20px;
   padding-left: 20px;
