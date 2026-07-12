@@ -86,7 +86,7 @@ LIVE after ~60s: testimonial min-width 210px served in style.css
 
 ---
 
-## Phase 5 — CONFIG wiring: UPI, forms, WhatsApp CTA (commit PENDING)
+## Phase 5 — CONFIG wiring: UPI, forms, WhatsApp CTA (commit df63d42)
 
 **Built:** `app.js` now injects CONFIG into the static sections on load: all `[data-config]` spans (promo code ×2, UPI ID, payee name, footer WhatsApp number), the general "Message Us on WhatsApp" CTA (prefilled wa.me link with promo code), and the feedback / Google Form links. Form links keep `href="#"` while their CONFIG values are `[PLACEHOLDER]`-style — no invented URLs; filling `CONFIG.FEEDBACK_FORM_URL` / `CONFIG.GOOGLE_FORM_URL` / `CONFIG.UPI_ID` and redeploying is the entire launch procedure.
 
@@ -102,4 +102,7 @@ data-config hooks in index.html (all mapped in app.js):
       1 data-config="whatsappDisplay"
 ```
 
-Live: LIVE_CHECK_PENDING
+Live — polled after push:
+```
+LIVE after ~75s: CONFIG wiring served in app.js
+```
