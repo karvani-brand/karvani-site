@@ -134,3 +134,20 @@ Live — polled after push:
 ```
 LIVE after ~30s: 380px media query + lazy images served
 ```
+
+---
+
+## Phase 7 — Docs + final verification (commit f00492a)
+
+**Built:** `README.md` (files, deploy flow, pricing formula, launch checklist, how to run checks), `ORDER_GUIDE.md` (non-technical: what the customer does, what the WhatsApp message looks like, what to reply, what the promo code means, what still needs setup), final `STATE.md`.
+
+**Final verification (actual output):**
+```
+node --check app.js       -> syntax OK
+node test/pricing.test.js -> All pricing checks passed.
+                             (0→0, 1→149, 2→298, 3→399, 4→548, 5→697, 6→798, 7→947, wa.me encoding)
+live product cards: 7
+index: 200   app.js: 200   style.css: 200   sample image: 200
+```
+
+**Remaining launch blockers (CONFIG placeholders, deliberately not invented):** `UPI_ID` (+ real QR image), `FEEDBACK_FORM_URL`, `GOOGLE_FORM_URL`.
