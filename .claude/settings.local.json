@@ -1,9 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(git add *)",
-      "Bash(git commit -m 'Phase 2: full static layout - hero, promo banner, 7 product cards, testimonials, made-by-hand, how-to-order, footer *)",
-      "Bash(git push *)"
-    ]
-  }
-}
