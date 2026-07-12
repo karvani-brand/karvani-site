@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style data-omelette-print-defaults>
+@media print {
+  @page { margin: 0.5in; }
+  h1, h2, h3, h4, h5, h6 { break-after: avoid; }
+  figure, table, pre, blockquote, img, svg, tr, [class~="card" i] { break-inside: avoid; }
+  img, svg { max-width: 100%; }
+  p { orphans: 3; widows: 3; }
+}
+</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=Mulish:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    ::selection { background: oklch(85% 0.05 145); }
+    a { color: oklch(45% 0.1 145); }
+    a:hover { color: oklch(38% 0.1 145); }
+  </style>
+</helmet>
+
+<div style="font-family: 'Mulish', sans-serif; background: oklch(97% 0.015 90); color: oklch(28% 0.02 145); max-width: 560px; margin: 0 auto; min-height: 100vh; position: relative; box-shadow: 0 0 60px rgba(0,0,0,0.06);">
+
+  <!-- HERO -->
+  <div style="padding: 28px 24px 24px; background: linear-gradient(180deg, oklch(93% 0.03 130) 0%, oklch(97% 0.015 90) 100%);">
+    <div style="display:flex; align-items:center; gap:10px; margin-bottom:18px;">
+      <svg width="34" height="34" viewBox="0 0 34 34" style="flex-shrink:0;">
+        <rect x="3" y="3" width="28" height="28" rx="8" fill="oklch(97% 0.015 90)" stroke="oklch(30% 0.05 145)" stroke-width="2"></rect>
+        <ellipse cx="17" cy="17" rx="5.5" ry="9.5" fill="oklch(30% 0.05 145)" transform="rotate(45 17 17)"></ellipse>
+        <line x1="17" y1="8.5" x2="17" y2="25.5" stroke="oklch(97% 0.015 90)" stroke-width="1" transform="rotate(45 17 17)"></line>
+      </svg>
+      <div style="font-family:'Lora',serif; font-weight:700; font-size:15px; letter-spacing:0.03em; text-transform:uppercase; color: oklch(30% 0.05 145);">Amma's Ayurvedic Soaps</div>
+    </div>
+
+    <h1 style="font-family:'Lora',serif; font-weight:600; font-size:30px; line-height:1.2; margin:0 0 8px; color: oklch(25% 0.05 145);">Handmade in small batches,<br>with love.</h1>
+    <p style="font-size:15px; line-height:1.55; margin: 0 0 20px; color: oklch(35% 0.02 145);">A school-teacher's love of clean, natural ingredients &mdash; turned into soap. Neem from the garden, real goat milk, real saffron. Nothing artificial, ever.</p>
+
+    <div style="display:flex; gap:14px; align-items:center; background: oklch(99% 0.01 90 / 0.6); border: 1px solid oklch(85% 0.03 130); border-radius: 14px; padding: 12px 14px;">
+      <img src="uploads/hero-soaps-crop.png" alt="Fresh soap" style="width:56px; height:56px; border-radius:10px; flex-shrink:0; object-fit:cover;">
+      <div style="font-size:12.5px; line-height:1.5; color: oklch(38% 0.03 145); font-style:italic;">"I make every bar myself, in my own kitchen &mdash; the same way I'd make it for my own family." <span style="display:block; font-style:normal; font-weight:700; margin-top:2px; color: oklch(30% 0.05 145);">&mdash; Amma</span></div>
+    </div>
+  </div>
+
+  <!-- PROMO BANNER -->
+  <div style="background: {{ accentColorVal }}; color: oklch(99% 0.01 90); padding: 11px 24px; font-size:13px; font-weight:700; text-align:center; letter-spacing:0.01em;">
+    WhatsApp us code <span style="text-decoration: underline; text-underline-offset:2px;">{{ promoCode }}</span> with your order for a special price
+  </div>
+
+  <!-- PRODUCTS -->
+  <div style="padding: 26px 20px 8px;">
+    <h2 style="font-family:'Lora',serif; font-weight:600; font-size:20px; margin: 0 0 4px; color: oklch(25% 0.05 145);">Our Soaps</h2>
+    <p style="font-size:13px; margin:0 0 14px; color: oklch(45% 0.02 145);">Add the bars you'd like, then send your order on WhatsApp.</p>
+    <div style="display:flex; align-items:center; gap:8px; background: oklch(93% 0.03 130); border: 1px dashed oklch(55% 0.08 145); border-radius: 10px; padding: 9px 12px; margin-bottom:18px; font-size:12.5px; font-weight:700; color: oklch(30% 0.05 145);">
+      <span style="font-size:15px;">✦</span> Any 3 bars &mdash; ₹399, applied automatically
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:16px;">
+      <sc-for list="{{ products }}" as="p" hint-placeholder-count="7">
+        <div style="background: oklch(99% 0.01 90); border: 1px solid oklch(90% 0.02 100); border-radius: 16px; overflow:hidden; display:flex; gap:0;">
+          <div style="width:110px; flex-shrink:0; position:relative; overflow:hidden;">
+            {{ p.imageEl }}
+            <sc-if value="{{ p.caption }}">
+              <div style="position:absolute; left:0; right:0; bottom:0; padding:4px 6px; background: linear-gradient(0deg, rgba(0,0,0,0.55), rgba(0,0,0,0)); font-size:9px; font-weight:700; color:white; text-align:center; letter-spacing:0.01em;">{{ p.caption }}</div>
+            </sc-if>
+          </div>
+          <div style="flex:1; padding: 14px 14px 14px 0; padding-left:14px; display:flex; flex-direction:column; gap:6px; min-width:0;">
+            <div style="font-family:'Lora',serif; font-weight:600; font-size:16px; color: oklch(25% 0.05 145);">{{ p.name }}</div>
+            <div style="font-size:11.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.03em; color: oklch(50% 0.08 145);">{{ p.ingredients }}</div>
+            <div style="font-size:12.5px; line-height:1.5; color: oklch(40% 0.02 145);">{{ p.description }}</div>
+            <div style="display:flex; align-items:baseline; gap:8px; margin-top:2px;">
+              <span style="font-size:17px; font-weight:800; color: oklch(25% 0.05 145);">₹{{ p.price }}</span>
+              <span style="font-size:13px; color: oklch(55% 0.02 145); text-decoration: line-through;">₹{{ p.mrp }}</span>
+            </div>
+            <sc-if value="{{ p.noQty }}" hint-placeholder-val="{{ true }}">
+              <button onClick="{{ p.add }}" style="margin-top:4px; background: oklch(40% 0.07 145); color: oklch(99% 0.01 90); font-weight:700; font-size:13px; padding: 9px 12px; border:none; border-radius: 100px; cursor:pointer; width:100%;" style-hover="background: oklch(33% 0.07 145);">Add to order</button>
+            </sc-if>
+            <sc-if value="{{ p.hasQty }}">
+              <div style="margin-top:4px; display:flex; align-items:center; justify-content:space-between; background: oklch(94% 0.02 145); border-radius: 100px; padding: 4px;">
+                <button onClick="{{ p.dec }}" style="width:32px; height:32px; border:none; border-radius:50%; background: oklch(99% 0.01 90); color: oklch(30% 0.05 145); font-size:20px; font-weight:700; cursor:pointer; line-height:1;">&minus;</button>
+                <span style="font-size:14px; font-weight:800; color: oklch(25% 0.05 145);">{{ p.qty }} in order</span>
+                <button onClick="{{ p.inc }}" style="width:32px; height:32px; border:none; border-radius:50%; background: oklch(40% 0.07 145); color: oklch(99% 0.01 90); font-size:20px; font-weight:700; cursor:pointer; line-height:1;">+</button>
+              </div>
+            </sc-if>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <div style="padding: 30px 20px; background: oklch(93% 0.025 120);">
+    <h2 style="font-family:'Lora',serif; font-weight:600; font-size:20px; margin: 0 0 16px; color: oklch(25% 0.05 145);">What Friends Are Saying</h2>
+    <div style="display:flex; gap:10px; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:4px; margin: 0 -20px; padding-left:20px; padding-right:20px;">
+      <sc-for list="{{ testimonials }}" as="t" hint-placeholder-count="3">
+        <div style="background: oklch(99% 0.01 90); border-radius: 14px; padding: 14px 14px; flex: 0 0 calc(33.333% - 7px); scroll-snap-align:start; display:flex; flex-direction:column;">
+          <div style="font-size:12.5px; line-height:1.5; color: oklch(32% 0.02 145); font-style:italic;">"{{ t.quote }}"</div>
+          <sc-if value="{{ t.name }}">
+            <div style="font-size:11.5px; font-weight:700; margin-top:8px; color: oklch(45% 0.06 145);">&mdash; {{ t.name }}</div>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+    <a href="{{ feedbackFormLink }}" target="_blank" rel="noopener" style="display:inline-block; margin-top:14px; font-size:12.5px; font-weight:700; color: oklch(45% 0.1 145); text-decoration:none;">Used our soaps? Share your experience &rarr;</a>
+  </div>
+
+  <!-- MADE BY HAND -->
+  <div style="padding: 28px 20px;">
+    <h2 style="font-family:'Lora',serif; font-weight:600; font-size:20px; margin: 0 0 12px; color: oklch(25% 0.05 145);">Made by Hand, at Home</h2>
+    <div style="display:flex; gap:10px;">
+      <img src="uploads/natural-ingredients.png" alt="Natural ingredients" style="flex:1; width:0; height:150px; object-fit:cover; border-radius:14px;">
+      <img src="uploads/making-process-ingredients.png" alt="Making process" style="flex:1; width:0; height:150px; object-fit:cover; border-radius:14px;">
+    </div>
+    <p style="font-size:13px; line-height:1.5; margin: 12px 0 0; color: oklch(38% 0.02 145);">Every bar starts in Amma's kitchen &mdash; real leaves, real milk, small batches poured by hand.</p>
+  </div>
+
+  <!-- HOW TO ORDER -->
+  <div style="padding: 30px 20px 24px;">
+    <h2 style="font-family:'Lora',serif; font-weight:600; font-size:20px; margin: 0 0 16px; color: oklch(25% 0.05 145);">How to Order &amp; Pay</h2>
+
+    <div style="display:flex; flex-direction:column; gap:12px; margin-bottom: 22px;">
+      <div style="display:flex; gap:12px; align-items:flex-start;">
+        <div style="width:26px; height:26px; border-radius:50%; background: {{ accentColorVal }}; color:white; font-weight:800; font-size:13px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">1</div>
+        <div style="font-size:13.5px; line-height:1.5; padding-top:2px; color: oklch(35% 0.02 145);">Message us on WhatsApp with the soap(s) you'd like &mdash; don't forget code <b>{{ promoCode }}</b>.</div>
+      </div>
+      <div style="display:flex; gap:12px; align-items:flex-start;">
+        <div style="width:26px; height:26px; border-radius:50%; background: {{ accentColorVal }}; color:white; font-weight:800; font-size:13px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">2</div>
+        <div style="font-size:13.5px; line-height:1.5; padding-top:2px; color: oklch(35% 0.02 145);">We'll confirm your order and total, plus delivery details.</div>
+      </div>
+      <div style="display:flex; gap:12px; align-items:flex-start;">
+        <div style="width:26px; height:26px; border-radius:50%; background: {{ accentColorVal }}; color:white; font-weight:800; font-size:13px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">3</div>
+        <div style="font-size:13.5px; line-height:1.5; padding-top:2px; color: oklch(35% 0.02 145);">Pay via UPI using the QR code below, and share a screenshot on WhatsApp.</div>
+      </div>
+    </div>
+
+    <div style="background: oklch(99% 0.01 90); border: 1px solid oklch(90% 0.02 100); border-radius: 16px; padding: 20px; display:flex; flex-direction:column; align-items:center; gap:10px;">
+      <div style="width:160px; height:160px; background-image: repeating-linear-gradient(45deg, oklch(90% 0.02 130), oklch(90% 0.02 130) 6px, oklch(97% 0.01 90) 6px, oklch(97% 0.01 90) 12px); border-radius:10px; display:flex; align-items:center; justify-content:center;">
+        <span style="font-family:monospace; font-size:11px; text-align:center; color: oklch(35% 0.02 145 / 0.7);">UPI QR<br>code</span>
+      </div>
+      <div style="font-size:13px; font-weight:700; color: oklch(30% 0.05 145);">{{ payeeName }}</div>
+      <div style="font-size:12px; color: oklch(45% 0.02 145);">UPI ID: {{ upiId }}</div>
+    </div>
+
+    <a href="{{ generalWaLink }}" target="_blank" rel="noopener" style="display:block; text-align:center; margin-top:18px; background: oklch(40% 0.07 145); color: oklch(99% 0.01 90); font-weight:700; font-size:14.5px; padding: 13px 12px; border-radius: 100px; text-decoration:none;">Message Us on WhatsApp</a>
+    <div style="text-align:center; margin-top:12px; font-size:12.5px; color: oklch(45% 0.02 145);">Prefer a form? <a href="{{ formLink }}" target="_blank" rel="noopener" style="color: oklch(45% 0.1 145); font-weight:700;">Order via Google Form</a></div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="padding: 18px 24px 32px; text-align:center; border-top: 1px solid oklch(90% 0.02 100);">
+    <div style="font-size:11.5px; line-height:1.6; color: oklch(50% 0.02 145);">Handmade in small batches. For external use. Individual results vary.</div>
+    <div style="font-size:11px; margin-top:8px; color: oklch(55% 0.02 145);">Amma's Ayurvedic Soaps &middot; {{ whatsappDisplay }}</div>
+  </div>
+
+  <!-- spacer so sticky bar never hides content -->
+  <sc-if value="{{ cartVisible }}">
+    <div style="height:96px;"></div>
+  </sc-if>
+
+  <!-- STICKY ORDER BAR -->
+  <sc-if value="{{ cartVisible }}">
+    <div style="position:fixed; bottom:0; left:50%; transform:translateX(-50%); width:100%; max-width:560px; background: oklch(99% 0.01 90); border-top:1px solid oklch(90% 0.02 100); box-shadow: 0 -6px 24px rgba(0,0,0,0.1); padding:12px 20px 16px; z-index:50;">
+      <div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
+        <div>
+          <div style="font-size:15px; font-weight:800; color: oklch(25% 0.05 145);">{{ cartCount }} · ₹{{ cartTotal }}</div>
+          <sc-if value="{{ bundleApplied }}">
+            <div style="font-size:11px; font-weight:700; color: oklch(50% 0.1 145); margin-top:1px;">3-bar bundle price applied ✓</div>
+          </sc-if>
+        </div>
+        <a href="{{ sendOrderLink }}" target="_blank" rel="noopener" style="flex-shrink:0; background: oklch(40% 0.07 145); color: oklch(99% 0.01 90); font-weight:700; font-size:14px; padding: 13px 20px; border-radius: 100px; text-decoration:none; white-space:nowrap;">Send order on WhatsApp</a>
+      </div>
+    </div>
+  </sc-if>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;whatsappNumber&quot;: { &quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;+91-9396857360&quot;, &quot;tsType&quot;: &quot;string&quot; },
+  &quot;promoCode&quot;: { &quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;AMMA20&quot;, &quot;tsType&quot;: &quot;string&quot; },
+  &quot;accentColor&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;default&quot;: &quot;terracotta&quot;, &quot;options&quot;: [&quot;terracotta&quot;, &quot;saffron&quot;, &quot;rust&quot;], &quot;tsType&quot;: &quot;string&quot; },
+  &quot;upiId&quot;: { &quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;add-upi-id@bank&quot;, &quot;tsType&quot;: &quot;string&quot; },
+  &quot;payeeName&quot;: { &quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;Amma's Ayurvedic Soaps&quot;, &quot;tsType&quot;: &quot;string&quot; },
+  &quot;formLink&quot;: { &quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;#&quot;, &quot;tsType&quot;: &quot;string&quot; },
+  &quot;feedbackFormLink&quot;: { &quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;#&quot;, &quot;tsType&quot;: &quot;string&quot; }
+}">
+class Component extends DCLogic {
+  state = { qty: {} };
+
+  addQty(name, delta) {
+    this.setState(s => {
+      const qty = { ...s.qty };
+      qty[name] = Math.max(0, (qty[name] || 0) + delta);
+      if (qty[name] === 0) delete qty[name];
+      return { qty };
+    });
+  }
+
+  renderVals() {
+    const waNumber = (this.props.whatsappNumber ?? '+91-9396857360').replace(/[^\d]/g, '');
+    const promoCode = this.props.promoCode ?? 'AMMA20';
+    const qtyMap = this.state.qty || {};
+    const accentOptions = {
+      terracotta: 'oklch(60% 0.14 40)',
+      saffron: 'oklch(70% 0.15 75)',
+      rust: 'oklch(52% 0.13 30)'
+    };
+    const accentColorVal = accentOptions[this.props.accentColor ?? 'terracotta'] || accentOptions.terracotta;
+
+    const rawProducts = [
+      { name: 'Charcoal', ingredients: 'Charcoal · Aloe Vera · Coconut Oil', description: 'Deep-cleansing bar that draws out dirt and oil, unclogs and tightens pores. Great for breakout-prone, oily skin.', price: 149, mrp: 199, image: 'uploads/charcoal-soap.png' },
+      { name: 'Goat Milk & Flaxseed', ingredients: 'Goat Milk · Flaxseed', description: 'Gentle, creamy cleanse. Flaxseed nourishes with omega fatty acids while goat milk deeply moisturizes dry, damaged skin.', price: 149, mrp: 199, image: 'uploads/goat-milk-flaxseed.png' },
+      { name: 'Orange Peel & Goat Milk', ingredients: 'Orange Peel · Goat Milk', description: 'Vitamin-C-rich orange peel helps fade dark spots and even skin tone. A brightening everyday bar with natural antioxidants.', price: 149, mrp: 199, image: 'uploads/orange-peel-goat-milk..png' },
+      { name: 'Shea Butter & Coconut', ingredients: 'Shea Butter · Coconut Oil · Glycerine', description: 'The moisture bar. Rich shea butter softens irritated or sun-exposed skin, restores suppleness, fades marks over time.', price: 149, mrp: 199, image: 'uploads/sheabutter-coconut-oil.png' },
+      { name: 'Saffron & Goat Milk', ingredients: 'Saffron · Goat Milk', description: 'The glow bar. Ultra-hydrating, brightens complexion, helps reduce tan and hyperpigmentation, leaves skin velvety smooth.', price: 149, mrp: 199, image: 'uploads/saffron-goat-milk.png' },
+      { name: 'Neem', ingredients: 'Neem · Aloe Vera · Vitamin E', description: 'The classic clear-skin bar. Deep cleans, helps control acne, calms itching and irritation without stripping skin.', price: 149, mrp: 199, image: 'uploads/neem-soap-mould.png', caption: 'fresh batch, curing now' },
+      { name: 'Body Scrub Bar', ingredients: 'Rice Flour · Flaxseed · Orange Peel · Essential Oils', description: 'Soap and scrub in one. Gently exfoliates dead cells, polishes texture, leaves you refreshed. Made for everyday use.', price: 149, mrp: 199, image: 'uploads/body-scrub-soap.png', caption: 'mid-pour, made to order' }
+    ];
+
+    const products = rawProducts.map((p) => {
+      const qty = qtyMap[p.name] || 0;
+      return {
+        ...p,
+        qty,
+        hasQty: qty > 0,
+        noQty: qty === 0,
+        imageEl: p.image ? React.createElement('img', { src: p.image, alt: p.name, style: { width: '100%', height: '100%', objectFit: 'cover', display: 'block' } }) : null,
+        add: () => this.addQty(p.name, 1),
+        inc: () => this.addQty(p.name, 1),
+        dec: () => this.addQty(p.name, -1)
+      };
+    });
+
+    // Cart math: every 3 bars = ₹399 bundle, remainder ₹149 each
+    const UNIT = 149, BUNDLE = 399;
+    const totalBars = products.reduce((n, p) => n + p.qty, 0);
+    const bundles = Math.floor(totalBars / 3);
+    const remainder = totalBars % 3;
+    const cartTotal = bundles * BUNDLE + remainder * UNIT;
+    const bundleApplied = bundles >= 1;
+    const cartCount = totalBars === 1 ? '1 bar' : `${totalBars} bars`;
+
+    const orderedItems = products.filter(p => p.qty > 0);
+    const itemLines = orderedItems.map(p => `${p.qty}× ${p.name}`).join('\n');
+    const orderMsg = `Hi! I'd like to order:\n${itemLines}\n\nTotal: ₹${cartTotal}\nCode: ${promoCode}`;
+    const sendOrderLink = `https://wa.me/${waNumber}?text=${encodeURIComponent(orderMsg)}`;
+
+    const generalWaLink = `https://wa.me/${waNumber}?text=${encodeURIComponent(`Hi! I'd like to place an order with Amma's Ayurvedic Soaps (code ${promoCode}).`)}`;
+
+    // Edit this array to add/change quotes — the row updates automatically.
+    const testimonials = [
+      { quote: 'I get easily irritated skin, and the neem bar is the only soap I use now — it keeps my skin calm.', name: 'Karthik' },
+      { quote: 'My skin feels smoother and softer since I started using these bars.', name: 'Kavitha' },
+      { quote: 'I got the neem bar for my little one and the body scrub and shea butter for myself — we all love them.', name: 'Indra' }
+    ];
+
+    const displayNumber = this.props.whatsappNumber ?? '+91 93968 57360';
+
+    return {
+      accentColorVal,
+      promoCode,
+      products,
+      cartVisible: totalBars > 0,
+      cartCount,
+      cartTotal,
+      bundleApplied,
+      sendOrderLink,
+      generalWaLink,
+      formLink: this.props.formLink ?? '#',
+      feedbackFormLink: this.props.feedbackFormLink ?? '#',
+      testimonials,
+      payeeName: this.props.payeeName ?? "Amma's Ayurvedic Soaps",
+      upiId: this.props.upiId ?? 'add-upi-id@bank',
+      whatsappDisplay: displayNumber
+    };
+  }
+}
+</script>
+<script>
+(async () => {
+  if (!document.title || !document.title.trim()) document.title = "Ayurvedic Soap Catalog";
+  // Prepend so page-supplied @page / break rules (deck-stage's margin:0,
+  // author CSS) keep source-order precedence over the baseline.
+  const baseCss = document.createElement('style');
+  baseCss.textContent = "@media print {\n  figure, table { break-inside: avoid; }\n  *, *::before, *::after {\n    print-color-adjust: exact; -webkit-print-color-adjust: exact;\n    backdrop-filter: none !important; -webkit-backdrop-filter: none !important;\n    animation-delay: -99s !important; animation-duration: .001s !important;\n    animation-iteration-count: 1 !important; animation-fill-mode: both !important;\n    animation-play-state: running !important; transition-duration: 0s !important;\n  }\n}";
+  document.head.prepend(baseCss);
+  if (document.readyState === 'loading') {
+    await new Promise((r) => document.addEventListener('DOMContentLoaded', r, { once: true }));
+  }
+  let ds = document.querySelector('deck-stage');
+  // whenDefined never resolves when nothing registers the element, so only
+  // await it when a <deck-stage> tag exists (and race a timeout regardless).
+  if (ds && !customElements.get('deck-stage')) {
+    try {
+      await Promise.race([
+        customElements.whenDefined('deck-stage'),
+        new Promise((r) => setTimeout(r, 3000)),
+      ]);
+    } catch (e) {}
+    ds = document.querySelector('deck-stage');
+  }
+  // dc-runtime assigns window.DCLogic at init and mounts into #dc-root on
+  // DOMContentLoaded; settle on that subtree so React has rendered before
+  // print(). Non-DC pages fall through to weighing body.
+  const isDc = !ds && 'DCLogic' in window;
+  const settleRoot = ds || (isDc ? document.getElementById('dc-root') : null) || document.body;
+  if (settleRoot) {
+    // Weigh only content children — skip script/style/template so inline
+    // Babel/CSS doesn't register as stable "content" before the framework
+    // has mounted anything.
+    const MEDIA = 'img,svg,canvas,video,picture,iframe,embed,object';
+    const weigh = () => {
+      let text = 0, media = 0;
+      for (const c of settleRoot.children) {
+        const t = c.tagName;
+        if (t === 'SCRIPT' || t === 'STYLE' || t === 'TEMPLATE') continue;
+        text += (c.textContent || '').trim().length;
+        media += c.querySelectorAll(MEDIA).length + (c.matches(MEDIA) ? 1 : 0);
+      }
+      return text + media * 100;
+    };
+    // "Non-zero and stable" alone is not sufficient to mean rendered: generic
+    // body can carry a static shell while async main content is pending, and
+    // #dc-root can carry the root DC's static text while child refs are still
+    // .sc-placeholder boxes. Gate generic on readyState 'complete', and never
+    // accept stability while a dc-runtime placeholder is present.
+    const isGeneric = settleRoot === document.body;
+    const deadline = Date.now() + 15000;
+    let last = -1, stable = 0;
+    while (Date.now() < deadline) {
+      const n = weigh();
+      const ready =
+        (!isGeneric || document.readyState === 'complete') &&
+        !settleRoot.querySelector('.sc-placeholder');
+      if (n > 0 && n === last && ready) { if (++stable >= 2) break; } else { stable = 0; }
+      last = n;
+      await new Promise((r) => setTimeout(r, 250));
+    }
+  }
+  // Project support.js may predate runtime default-seeding; push via bridge.
+  if (isDc && window.__dcSetProps && window.__dcRootName) {
+    try {
+      const dpEl = document.querySelector('script[data-dc-script]');
+      const meta = JSON.parse((dpEl && dpEl.getAttribute('data-props')) || '{}');
+      const bag = {};
+      for (const k in meta)
+        if (k[0] !== '$' && meta[k] && meta[k].default !== undefined)
+          bag[k] = meta[k].default;
+      if (Object.keys(bag).length) {
+        window.__dcSetProps(window.__dcRootName(), bag);
+        await new Promise((r) => setTimeout(r, 50));
+      }
+    } catch (e) {}
+  }
+  // Reveal content gated on scroll or visibility before printing. Lazy <img>,
+  // IntersectionObserver fade-ins, and collapsed <details> don't render while
+  // off-screen, so a long page would print with them blank or closed. Open
+  // every <details>, force native-lazy images eager, and scroll the document
+  // through its full height to trip lazy-load + IO; then wait (bounded) for the
+  // newly-triggered images. Inert for deck-stage (slides aren't scroll-gated).
+  try {
+    for (const d of document.querySelectorAll('details')) d.open = true;
+    for (const img of document.querySelectorAll('img[loading="lazy"]'))
+      img.loading = 'eager';
+    const scroller = document.scrollingElement || document.documentElement;
+    const full = Math.max(scroller.scrollHeight, document.body.scrollHeight);
+    const step = window.innerHeight || 800;
+    for (let y = 0; y <= full; y += step) {
+      window.scrollTo(0, y);
+      await new Promise((r) => requestAnimationFrame(r));
+    }
+    window.scrollTo(0, 0);
+    await Promise.race([
+      Promise.all(
+        [...document.images].map((img) =>
+          img.complete
+            ? null
+            : new Promise((res) => {
+                img.addEventListener('load', res, { once: true });
+                img.addEventListener('error', res, { once: true });
+              })
+        )
+      ),
+      new Promise((r) => setTimeout(r, 4000)),
+    ]);
+  } catch (e) {}
+  try { await document.fonts.ready; } catch (e) {}
+  // Jump every animation to its end state so print() never captures a slide
+  // mid-entrance. Ordering matters: the 0s-transition style must be live
+  // BEFORE data-deck-active is set so attribute-keyed transitions don't
+  // start a (now-0s) run from the pre-active base.
+  const st = document.createElement('style');
+  st.textContent = '*,*::before,*::after{animation-delay:-99s !important;animation-duration:.001s !important;animation-iteration-count:1 !important;animation-fill-mode:both !important;animation-play-state:running !important;transition-duration:0s !important}';
+  document.head.appendChild(st);
+  for (const d of document.querySelectorAll('deck-stage')) {
+    for (const c of d.children) {
+      const t = c.tagName;
+      if (t === 'SCRIPT' || t === 'STYLE' || t === 'TEMPLATE') continue;
+      c.setAttribute('data-deck-active', '');
+    }
+  }
+  // Re-append deck-stage's @page last so no author @page can add a margin and
+  // spill each full-bleed slide onto two sheets. Backstop for old copies.
+  if (ds) {
+    let pg = document.getElementById('deck-stage-print-page');
+    if (!pg) {
+      pg = document.createElement('style');
+      pg.textContent = '@page{size:' + (+ds.getAttribute('width') || 1920) +
+        'px ' + (+ds.getAttribute('height') || 1080) + 'px;margin:0}';
+    }
+    document.body.appendChild(pg);
+  }
+  try {
+    const sweep = () => {
+      for (const a of document.getAnimations()) {
+        try { a.finish(); } catch (e) {
+          try { a.currentTime = (a.effect && a.effect.getComputedTiming().duration) || 0; a.pause(); } catch (e2) {}
+        }
+      }
+    };
+    sweep();
+    await new Promise((r) => requestAnimationFrame(r));
+    sweep();
+    await new Promise((r) => requestAnimationFrame(r));
+  } catch (e) {}
+  // A document that owns its print CSS (the doc-page starter injects the
+  // meta at runtime; hand-rolled print designs author it) gets no automatic
+  // page geometry and keeps its forced breaks: strip the injected default
+  // @page — write time cannot see a runtime-injected meta — skip the frame
+  // override below, and skip the fakepage-flattening further down. What
+  // still applies: the print baseline and break-hygiene defaults (no @page
+  // in either; low specificity, so the document's own print CSS wins) and
+  // the break-inside relaxation on >page elements (avoid on those cannot
+  // be honored whoever authored it).
+  var ownsPrint = !!document.querySelector('meta[name="omelette-owns-print" i]');
+  if (ownsPrint) {
+    var dst = document.querySelector('style[data-omelette-print-defaults]');
+    if (dst && dst.textContent) {
+      dst.textContent = dst.textContent.replace(/@page\b[^{}]*\{[^}]*\}/, '');
+    }
+  }
+  // Size the PDF page to the rendered design unless the file opted into
+  // standard paper via @page{size:letter|A4|…} or declared print ownership
+  // via the meta above. Decks own their own @page.
+  // Wrappers (body, …) lose padding+margin so the frame sits at (0,0); the
+  // frame itself loses only margin — its padding is INSIDE the measured
+  // rect and must stay, or content shifts and leaves a gap at bottom/right.
+  var __m = null;
+  try { __m = (() => {
+  var STAMP = true;
+  var docEl = document.documentElement;
+  var doc = { width: docEl.scrollWidth, height: docEl.scrollHeight };
+  // Name-presence check, case-insensitive — the same contract as the
+  // instant-PDF path's runtime check in deck-stage-export.ts. The name is
+  // a string literal here because that file interpolates this script into
+  // its print script, so importing a shared constant from it would be a
+  // cycle; measure.test.ts pins the literal so the two cannot drift apart
+  // silently.
+  var ownsPrint = !!document.querySelector('meta[name="omelette-owns-print" i]');
+
+  var ds = document.querySelector('deck-stage');
+  if (ds) {
+    var dw = Number(ds.getAttribute('width')) || 1920;
+    var dh = Number(ds.getAttribute('height')) || 1080;
+    var n = typeof ds.length === 'number' ? ds.length : ds.children.length;
+    var idx = typeof ds.index === 'number' ? ds.index : 0;
+    var frames = [];
+    for (var i = 0; i < n; i++) frames.push({ left: 0, top: 0, width: dw, height: dh });
+    return { kind: 'deck', source: 'declared', doc: doc, frames: frames,
+      authored: frames.map(function(){return{width:true,height:true}}),
+      deck: { width: dw, height: dh, slideCount: n, index: idx },
+      signals: { paperPage: false, pxPage: false, ownsPrint: ownsPrint } };
+  }
+
+  // Declared kind: a doc-page tag names the kind outright, so no signal
+  // heuristics run (like the deck branch above, signals report false —
+  // they describe inferred classifications only). The tag alone is not
+  // trusted: the element must have upgraded (shadowRoot present), so a
+  // leftover tag whose script was deleted falls through to the heuristics
+  // that handle plain markup.
+  var stageSx = window.scrollX || 0, stageSy = window.scrollY || 0;
+  var dp = document.querySelector('doc-page');
+  if (dp && dp.shadowRoot) {
+    // Crop to the sheet, not the host — the desk around it is screen-only
+    // chrome that must not land in PNG exports.
+    var sheet = dp.shadowRoot.querySelector('.sheet');
+    var sr = (sheet || dp).getBoundingClientRect();
+    return { kind: 'paper-doc', source: 'declared', doc: doc,
+      frames: [{ left: sr.left + stageSx, top: sr.top + stageSy,
+        width: sr.width, height: sr.height }],
+      authored: [{ width: false, height: false }],
+      signals: { paperPage: false, pxPage: false, ownsPrint: ownsPrint } };
+  }
+  var paperPage = false, pxPage = false;
+  var eachRule = function (fn) {
+    for (var s = 0; s < document.styleSheets.length; s++) {
+      var rs; try { rs = document.styleSheets[s].cssRules; } catch (e) { continue; }
+      for (var r = 0; r < rs.length; r++) {
+        fn(rs[r]);
+        if (rs[r].cssRules) for (var n = 0; n < rs[r].cssRules.length; n++) fn(rs[r].cssRules[n]);
+      }
+    }
+  };
+  eachRule(function (r) {
+    if (r.type !== 6) return;
+    var m = /\bsize\s*:\s*([^;}]+)/i.exec(r.cssText || '');
+    if (!m) return;
+    if (/\b(letter|a[3-5]|legal|ledger)\b/i.test(m[1])) paperPage = true;
+    if (/\d+(?:\.\d+)?px\b/i.test(m[1])) pxPage = true;
+  });
+  var signals = { paperPage: paperPage, pxPage: pxPage, ownsPrint: ownsPrint };
+
+  var pxVal = function (v) {
+    var m = /^(\d+(?:\.\d+)?)px$/.exec(v || ''); return m ? +m[1] : 0;
+  };
+  var authoredPx = function (el, prop) {
+    if (pxVal(el.style[prop])) return true;
+    var attr = el.getAttribute(prop);
+    if (attr && /^\d+$/.test(attr)) return true;
+    var hit = false;
+    eachRule(function (r) {
+      if (hit || r.type !== 1 || !r.style) return;
+      try { if (el.matches(r.selectorText) && pxVal(r.style[prop])) hit = true; } catch (e) {}
+    });
+    return hit;
+  };
+
+  var el = document.body, rootPxW = false;
+  for (;;) {
+    var kids = [];
+    for (var c = 0; c < el.children.length; c++) {
+      var t = el.children[c].tagName;
+      if (t !== 'SCRIPT' && t !== 'STYLE' && t !== 'TEMPLATE') kids.push(el.children[c]);
+    }
+    if (kids.length !== 1 || !(kids[0] instanceof HTMLElement)) break;
+    if (STAMP) el.setAttribute('data-om-frame-wrap', '');
+    el = kids[0];
+    rootPxW = authoredPx(el, 'width');
+    if (rootPxW) break;
+  }
+  if (!rootPxW) rootPxW = authoredPx(el, 'width');
+
+  // @page{size:letter} alone is a flowing doc; with a px-width root it's a
+  // fixed sheet pretending to be paper — fall through and size to render.
+  if (paperPage && !rootPxW) {
+    return { kind: 'paper-doc', source: 'inferred', doc: doc, signals: signals,
+      frames: [{ left: 0, top: 0, width: doc.width, height: doc.height }],
+      authored: [{ width: false, height: false }] };
+  }
+
+  var sx = window.scrollX || 0, sy = window.scrollY || 0;
+  var rectOf = function (e) {
+    var r = e.getBoundingClientRect();
+    var oy; try { oy = getComputedStyle(e).overflowY; } catch (err) {}
+    var h = oy === 'visible' ? Math.max(r.height, e.scrollHeight || 0) : r.height;
+    return { left: r.left + sx, top: r.top + sy, width: r.width, height: h };
+  };
+
+  // Multi-frame: off unless the page opts in via data-om-multi-frame on the
+  // stop element — the explicit opt-in is what guards against card grids
+  // and pricing tables that match the geometry but aren't separate
+  // canvases. Two ways to name the frames, explicit first:
+  // 1. Descendants marked data-om-frame-export (the social-frames starter
+  //    marks each asset frame; shells/panels around them are presentation,
+  //    so nesting is expected). Document order.
+  // 2. Fallback, no marked descendants: direct children with an authored px
+  //    width AND height (the original geometry heuristic).
+  // Frames may be different sizes (a gallery mixes 1080×1920 stories with
+  // 728×90 banners); data-om-frame-label rides along for export filenames.
+  if (el.hasAttribute('data-om-multi-frame')) {
+    var visOk = function (e) {
+      var cs; try { cs = getComputedStyle(e); } catch (err) { return false; }
+      return cs.display !== 'none' && cs.visibility !== 'hidden' && cs.position !== 'fixed';
+    };
+    // A frame's crop is its VISUAL box — never the scrollHeight-inflated
+    // rect that rectOf computes for page roots. Shadow-DOM hover controls
+    // (image-slot's Replace bar parks 29px below its host) and similar
+    // escaping UI contribute scrollable overflow to the frame, and the
+    // inflated height both squashes the nominal-size resize and drags
+    // content below the frame into the crop. Zoom-independent; bit every
+    // slot-bearing frame.
+    var frameRectOf = function (e) {
+      var r = e.getBoundingClientRect();
+      return { left: r.left + sx, top: r.top + sy, width: r.width, height: r.height };
+    };
+    var pushCand = function (list, e) {
+      if (!visOk(e)) return;
+      var rc = frameRectOf(e);
+      if (rc.width < 2 || rc.height < 2) return;
+      var lbl = e.getAttribute('data-om-frame-label');
+      if (lbl) rc.label = lbl;
+      list.push(rc);
+    };
+    var cands = [];
+    var marked = el.querySelectorAll('[data-om-frame-export]');
+    if (marked.length) {
+      for (var mk = 0; mk < marked.length; mk++) pushCand(cands, marked[mk]);
+    } else {
+      for (var k = 0; k < el.children.length; k++) {
+        var ch = el.children[k];
+        if (!authoredPx(ch, 'width') || !authoredPx(ch, 'height')) continue;
+        pushCand(cands, ch);
+      }
+    }
+    if (cands.length >= 2) {
+      return { kind: 'multi-frame', source: 'inferred', doc: doc, signals: signals,
+        frames: cands, authored: cands.map(function(){return{width:true,height:true}}) };
+    }
+  }
+
+  if (STAMP) el.setAttribute('data-om-frame', '');
+  return { kind: 'single-canvas', source: 'inferred', doc: doc, signals: signals,
+    frames: [rectOf(el)],
+    authored: [{ width: rootPxW, height: authoredPx(el, 'height') }] };
+})(); } catch (e) {}
+  var frame = null;
+  if (!ownsPrint && __m && __m.kind === 'single-canvas') {
+    var f = __m.frames && __m.frames[0];
+    if (f && f.width >= 200 && f.height >= 200) {
+      frame = f;
+      var fst = document.createElement('style');
+      fst.textContent = '@media print{@page{size:' + Math.ceil(f.width) + 'px ' +
+        Math.ceil(f.height) + 'px;margin:0}' +
+        'html,body,[data-om-frame-wrap]{padding:0!important;margin:0!important;background:none!important}' +
+        '[data-om-frame]{margin:0!important}}';
+      document.body.appendChild(fst);
+    }
+  }
+  // Relax break-inside on oversized elements. An element taller than a
+  // printable page can't honor break-inside: avoid — browsers either overflow
+  // it or push it whole to the next page, leaving a blank gap, then break it
+  // anyway at an arbitrary point. After the final layout (content revealed,
+  // animations jumped), find elements taller than a page that still compute
+  // break-inside: avoid and reset them to auto, so the browser breaks them at
+  // their children's boundaries instead (children keep their own avoid). PAGE_PX
+  // is a conservative portrait estimate at 96 CSS px/in — Letter/A4 usable
+  // height minus our 0.5in margins — so only clearly-oversized elements are
+  // touched and under-page elements still stay whole. Skipped for decks (slides
+  // are sized to the page) and for fixed-size canvases (frame set, or an author
+  // px-based @page) — runs as before for flowing docs on letter/A4.
+  try {
+    if (!ds && !frame && !(__m && __m.signals && __m.signals.pxPage)) {
+      const PAGE_PX = 1024;
+      // Our print defaults add a real @page margin only when the source has
+      // no @page of its own; computed style can't tell us (it reports screen
+      // media), so read the injected rule directly.
+      const defaults = document.querySelector('style[data-omelette-print-defaults]');
+      const pageInset = /@page\s*\{[^}]*margin/.test(defaults ? defaults.textContent || '' : '');
+      const SEL = 'section,article,figure,table,pre,blockquote,[class~="card" i],[class~="page" i],[class~="sheet" i]';
+      for (const el of document.body.querySelectorAll(SEL)) {
+        if (el instanceof HTMLElement && el.offsetHeight > PAGE_PX) {
+          el.setAttribute('data-om-oversized', '');
+          // Fake-paged docs simulate sheets with over-tall break-after:page
+          // boxes; honoring the break spills half-blank pages and ends a
+          // colored box mid-sheet. Flow them, and (only when we own the page
+          // inset) drop the redundant padding/background via the rule below.
+          const cs = getComputedStyle(el);
+          // An owns-print doc's forced breaks are intentional sheet
+          // boundaries, never fake-paged simulation — don't strip them.
+          // The break-inside relaxation above still applies: avoid on a
+          // >page element is impossible to honor whoever authored it.
+          if (
+            !ownsPrint &&
+            (cs.breakAfter === 'page' || cs.pageBreakAfter === 'always')
+          ) {
+            el.setAttribute('data-om-fakepage', '');
+          }
+        }
+      }
+      const ost = document.createElement('style');
+      ost.textContent = '@media print{' +
+        '[data-om-oversized]{break-inside:auto !important;page-break-inside:auto !important}' +
+        '[data-om-fakepage]{break-after:auto !important;page-break-after:auto !important}' +
+        (pageInset ? '[data-om-fakepage]{padding:0 !important;background:none !important}' : '') +
+        '}';
+      document.head.appendChild(ost);
+    }
+  } catch (e) {}
+  // macOS Preview renders Skia-PDF Luminosity soft-masks as opaque grey boxes;
+  // swap the CSS that triggers them for Preview-safe forms.
+  try {
+    for (const el of document.body.querySelectorAll('*')) {
+      const cs = getComputedStyle(el);
+
+      if (cs.boxShadow !== 'none' && cs.filter === 'none') {
+        const outs = [], kept = [];
+        for (const s of cs.boxShadow.split(/,(?![^(]*[)])/)) {
+          const t = s.trim();
+          const m = t.match(/^(rgba?[(][^)]+[)]) (-?[0-9.]+px) (-?[0-9.]+px) ([0-9.]+px) -?[0-9.]+px$/);
+          if (m && parseFloat(m[4]) > 0) outs.push('drop-shadow(' + m[2] + ' ' + m[3] + ' ' + m[4] + ' ' + m[1] + ')');
+          else kept.push(t);
+        }
+        if (outs.length) {
+          el.style.setProperty('filter', outs.join(' '), 'important');
+          el.style.setProperty('box-shadow', kept.join(', ') || 'none', 'important');
+        }
+      }
+
+      const mask = cs.maskImage && cs.maskImage !== 'none' ? cs.maskImage : cs.webkitMaskImage;
+      if (mask && mask !== 'none' && cs.filter === 'none') el.style.setProperty('filter', 'opacity(1)', 'important');
+    }
+  } catch (e) {}
+  setTimeout(() => { try { window.print(); } catch (e) {} }, 200);
+})();
+</script>
+</body>
+</html>
