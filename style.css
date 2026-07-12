@@ -396,6 +396,7 @@ a:hover { color: var(--link-hover); }
   border-radius: 14px;
   padding: 14px;
   flex: 0 0 calc(33.333% - 7px);
+  min-width: 210px; /* keeps quotes readable on phones; row scroll-snaps instead of squeezing */
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;
