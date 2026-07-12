@@ -25,7 +25,34 @@ function buildWhatsAppLink(message) {
   return `https://wa.me/${digits}?text=${encodeURIComponent(message)}`;
 }
 
+// '[UPI_ID]'-style values are unfilled launch placeholders.
+function isPlaceholder(value) {
+  return value.startsWith('[');
+}
+
 if (typeof document !== 'undefined') {
+
+  // ---- Wire CONFIG into the static sections ----
+  const configText = {
+    promoCode: CONFIG.PROMO_CODE,
+    upiId: CONFIG.UPI_ID,
+    payeeName: CONFIG.PAYEE_NAME,
+    whatsappDisplay: CONFIG.WHATSAPP_NUMBER
+  };
+  document.querySelectorAll('[data-config]').forEach((el) => {
+    el.textContent = configText[el.dataset.config];
+  });
+
+  document.getElementById('general-wa-link').href = buildWhatsAppLink(
+    `Hi! I'd like to place an order with ${CONFIG.PAYEE_NAME} (code ${CONFIG.PROMO_CODE}).`
+  );
+  // Form links stay '#' until their CONFIG URLs are filled in.
+  if (!isPlaceholder(CONFIG.FEEDBACK_FORM_URL)) {
+    document.getElementById('feedback-link').href = CONFIG.FEEDBACK_FORM_URL;
+  }
+  if (!isPlaceholder(CONFIG.GOOGLE_FORM_URL)) {
+    document.getElementById('order-form-link').href = CONFIG.GOOGLE_FORM_URL;
+  }
 
   const qty = {}; // product name -> bar count
 
