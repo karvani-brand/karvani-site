@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Amma's Ayurvedic Soaps</title>
+<meta name="description" content="Handmade ayurvedic soaps in small batches — neem, goat milk, saffron, charcoal. Order on WhatsApp.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=Mulish:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
@@ -11,18 +12,39 @@
 <body>
 <div class="page">
 
-  <header class="site-header">
-    <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true">
-      <rect x="3" y="3" width="28" height="28" rx="8" fill="var(--cream)" stroke="var(--leaf-dark)" stroke-width="2"></rect>
-      <ellipse cx="17" cy="17" rx="5.5" ry="9.5" fill="var(--leaf-dark)" transform="rotate(45 17 17)"></ellipse>
-      <line x1="17" y1="8.5" x2="17" y2="25.5" stroke="var(--cream)" stroke-width="1" transform="rotate(45 17 17)"></line>
-    </svg>
-    <span class="wordmark">Amma's Ayurvedic Soaps</span>
-  </header>
+  <!-- HERO -->
+  <section class="hero">
+    <header class="site-header">
+      <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true">
+        <rect x="3" y="3" width="28" height="28" rx="8" fill="var(--cream)" stroke="var(--leaf-dark)" stroke-width="2"></rect>
+        <ellipse cx="17" cy="17" rx="5.5" ry="9.5" fill="var(--leaf-dark)" transform="rotate(45 17 17)"></ellipse>
+        <line x1="17" y1="8.5" x2="17" y2="25.5" stroke="var(--cream)" stroke-width="1" transform="rotate(45 17 17)"></line>
+      </svg>
+      <span class="wordmark">Amma's Ayurvedic Soaps</span>
+    </header>
 
-  <main>
-    <section class="product-grid" id="product-grid">
-      <article class="product-card" data-name="Charcoal" data-price="149">
+    <h1 class="hero-title">Handmade in small batches,<br>with love.</h1>
+    <p class="hero-intro">A school-teacher's love of clean, natural ingredients &mdash; turned into soap. Neem from the garden, real goat milk, real saffron. Nothing artificial, ever.</p>
+
+    <div class="hero-quote">
+      <img src="assets/images/hero-soaps-crop.png" alt="Fresh soap">
+      <div class="hero-quote-text">"I make every bar myself, in my own kitchen &mdash; the same way I'd make it for my own family." <span class="hero-quote-name">&mdash; Amma</span></div>
+    </div>
+  </section>
+
+  <!-- PROMO BANNER -->
+  <div class="promo-banner">
+    WhatsApp us code <span class="promo-code" data-config="promoCode">AMMA20</span> with your order for a special price
+  </div>
+
+  <!-- PRODUCTS -->
+  <section class="products">
+    <h2 class="section-title">Our Soaps</h2>
+    <p class="products-sub">Add the bars you'd like, then send your order on WhatsApp.</p>
+    <div class="bundle-callout"><span class="bundle-star">&#10022;</span> Any 3 bars &mdash; &#8377;399, applied automatically</div>
+
+    <div class="product-grid" id="product-grid">
+      <article class="product-card" data-name="Charcoal">
         <div class="product-image">
           <img src="assets/images/charcoal-soap.png" alt="Charcoal soap bar">
         </div>
@@ -37,8 +59,171 @@
           <button class="btn-add" type="button" data-action="add">Add to order</button>
         </div>
       </article>
-    </section>
-  </main>
+
+      <article class="product-card" data-name="Goat Milk &amp; Flaxseed">
+        <div class="product-image">
+          <img src="assets/images/goat-milk-flaxseed.png" alt="Goat milk and flaxseed soap bar">
+        </div>
+        <div class="product-body">
+          <h3 class="product-name">Goat Milk &amp; Flaxseed</h3>
+          <div class="product-ingredients">Goat Milk &middot; Flaxseed</div>
+          <p class="product-description">Gentle, creamy cleanse. Flaxseed nourishes with omega fatty acids while goat milk deeply moisturizes dry, damaged skin.</p>
+          <div class="product-price">
+            <span class="price-now">&#8377;149</span>
+            <span class="price-mrp">&#8377;199</span>
+          </div>
+          <button class="btn-add" type="button" data-action="add">Add to order</button>
+        </div>
+      </article>
+
+      <article class="product-card" data-name="Orange Peel &amp; Goat Milk">
+        <div class="product-image">
+          <img src="assets/images/orange-peel-goat-milk.png" alt="Orange peel and goat milk soap bar">
+        </div>
+        <div class="product-body">
+          <h3 class="product-name">Orange Peel &amp; Goat Milk</h3>
+          <div class="product-ingredients">Orange Peel &middot; Goat Milk</div>
+          <p class="product-description">Vitamin-C-rich orange peel helps fade dark spots and even skin tone. A brightening everyday bar with natural antioxidants.</p>
+          <div class="product-price">
+            <span class="price-now">&#8377;149</span>
+            <span class="price-mrp">&#8377;199</span>
+          </div>
+          <button class="btn-add" type="button" data-action="add">Add to order</button>
+        </div>
+      </article>
+
+      <article class="product-card" data-name="Shea Butter &amp; Coconut">
+        <div class="product-image">
+          <img src="assets/images/sheabutter-coconut-oil.png" alt="Shea butter and coconut soap bar">
+        </div>
+        <div class="product-body">
+          <h3 class="product-name">Shea Butter &amp; Coconut</h3>
+          <div class="product-ingredients">Shea Butter &middot; Coconut Oil &middot; Glycerine</div>
+          <p class="product-description">The moisture bar. Rich shea butter softens irritated or sun-exposed skin, restores suppleness, fades marks over time.</p>
+          <div class="product-price">
+            <span class="price-now">&#8377;149</span>
+            <span class="price-mrp">&#8377;199</span>
+          </div>
+          <button class="btn-add" type="button" data-action="add">Add to order</button>
+        </div>
+      </article>
+
+      <article class="product-card" data-name="Saffron &amp; Goat Milk">
+        <div class="product-image">
+          <img src="assets/images/saffron-goat-milk.png" alt="Saffron and goat milk soap bar">
+        </div>
+        <div class="product-body">
+          <h3 class="product-name">Saffron &amp; Goat Milk</h3>
+          <div class="product-ingredients">Saffron &middot; Goat Milk</div>
+          <p class="product-description">The glow bar. Ultra-hydrating, brightens complexion, helps reduce tan and hyperpigmentation, leaves skin velvety smooth.</p>
+          <div class="product-price">
+            <span class="price-now">&#8377;149</span>
+            <span class="price-mrp">&#8377;199</span>
+          </div>
+          <button class="btn-add" type="button" data-action="add">Add to order</button>
+        </div>
+      </article>
+
+      <article class="product-card" data-name="Neem">
+        <div class="product-image">
+          <img src="assets/images/neem-soap-mould.png" alt="Neem soap in mould">
+          <div class="product-caption">fresh batch, curing now</div>
+        </div>
+        <div class="product-body">
+          <h3 class="product-name">Neem</h3>
+          <div class="product-ingredients">Neem &middot; Aloe Vera &middot; Vitamin E</div>
+          <p class="product-description">The classic clear-skin bar. Deep cleans, helps control acne, calms itching and irritation without stripping skin.</p>
+          <div class="product-price">
+            <span class="price-now">&#8377;149</span>
+            <span class="price-mrp">&#8377;199</span>
+          </div>
+          <button class="btn-add" type="button" data-action="add">Add to order</button>
+        </div>
+      </article>
+
+      <article class="product-card" data-name="Body Scrub Bar">
+        <div class="product-image">
+          <img src="assets/images/body-scrub-soap.png" alt="Body scrub soap bar">
+          <div class="product-caption">mid-pour, made to order</div>
+        </div>
+        <div class="product-body">
+          <h3 class="product-name">Body Scrub Bar</h3>
+          <div class="product-ingredients">Rice Flour &middot; Flaxseed &middot; Orange Peel &middot; Essential Oils</div>
+          <p class="product-description">Soap and scrub in one. Gently exfoliates dead cells, polishes texture, leaves you refreshed. Made for everyday use.</p>
+          <div class="product-price">
+            <span class="price-now">&#8377;149</span>
+            <span class="price-mrp">&#8377;199</span>
+          </div>
+          <button class="btn-add" type="button" data-action="add">Add to order</button>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <h2 class="section-title">What Friends Are Saying</h2>
+    <div class="testimonial-row">
+      <div class="testimonial-card">
+        <div class="testimonial-quote">"I get easily irritated skin, and the neem bar is the only soap I use now &mdash; it keeps my skin calm."</div>
+        <div class="testimonial-name">&mdash; Karthik</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-quote">"My skin feels smoother and softer since I started using these bars."</div>
+        <div class="testimonial-name">&mdash; Kavitha</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-quote">"I got the neem bar for my little one and the body scrub and shea butter for myself &mdash; we all love them."</div>
+        <div class="testimonial-name">&mdash; Indra</div>
+      </div>
+    </div>
+    <a class="feedback-link" id="feedback-link" href="#" target="_blank" rel="noopener">Used our soaps? Share your experience &rarr;</a>
+  </section>
+
+  <!-- MADE BY HAND -->
+  <section class="made-by-hand">
+    <h2 class="section-title">Made by Hand, at Home</h2>
+    <div class="made-photos">
+      <img src="assets/images/natural-ingredients.png" alt="Natural ingredients">
+      <img src="assets/images/making-process-ingredients.png" alt="Making process">
+    </div>
+    <p class="made-text">Every bar starts in Amma's kitchen &mdash; real leaves, real milk, small batches poured by hand.</p>
+  </section>
+
+  <!-- HOW TO ORDER -->
+  <section class="how-to-order">
+    <h2 class="section-title">How to Order &amp; Pay</h2>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">Message us on WhatsApp with the soap(s) you'd like &mdash; don't forget code <b data-config="promoCode">AMMA20</b>.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">We'll confirm your order and total, plus delivery details.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-text">Pay via UPI using the QR code below, and share a screenshot on WhatsApp.</div>
+      </div>
+    </div>
+
+    <div class="upi-card">
+      <div class="upi-qr"><span>UPI QR<br>code</span></div>
+      <div class="upi-payee" data-config="payeeName">Amma's Ayurvedic Soaps</div>
+      <div class="upi-id">UPI ID: <span data-config="upiId">[UPI_ID]</span></div>
+    </div>
+
+    <a class="btn-wa" id="general-wa-link" href="#" target="_blank" rel="noopener">Message Us on WhatsApp</a>
+    <div class="form-line">Prefer a form? <a id="order-form-link" href="#" target="_blank" rel="noopener">Order via Google Form</a></div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-note">Handmade in small batches. For external use. Individual results vary.</div>
+    <div class="footer-brand">Amma's Ayurvedic Soaps &middot; <span data-config="whatsappDisplay">+91-9396857360</span></div>
+  </footer>
 
 </div>
 <script src="app.js"></script>

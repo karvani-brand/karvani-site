@@ -21,7 +21,6 @@ document.getElementById('product-grid').addEventListener('click', (e) => {
   if (!btn) return;
   const card = btn.closest('.product-card');
   const name = card.dataset.name;
-  const price = card.dataset.price;
-  const message = `Hi! I'd like to order:\n1× ${name}\n\nTotal: ₹${price}\nCode: ${CONFIG.PROMO_CODE}`;
+  const message = `Hi! I'd like to order:\n1× ${name}\n\nTotal: ₹149\nCode: ${CONFIG.PROMO_CODE}`;
   window.open(buildWhatsAppLink(message), '_blank', 'noopener');
 });
