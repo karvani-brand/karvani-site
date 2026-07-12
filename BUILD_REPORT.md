@@ -32,3 +32,33 @@ live product cards: 7
 ```
 
 **Note:** commit f44de7c accidentally tracked `.claude/settings.local.json` (via `git add -A`); untracked + gitignored in the Phase 2 wrap-up commit.
+
+---
+
+## Phase 3 — Order builder + bundle pricing (commit 57850fb)
+
+**Built:** `app.js` rewritten around a qty state map. "Add to order" swaps to a −/+ stepper per card (stepper markup injected once by JS). Sticky order bar (fixed, max-width 560px) shows bar count, total, "3-bar bundle price applied ✓" when ≥3 bars, and a Send-order wa.me link with itemized message + promo code. Spacer div (96px) toggles with the bar so it never covers the last content. Pricing is a pure `orderTotal(bars)` exported for Node (`bundles*399 + remainder*149`), unit-checked in `test/pricing.test.js`.
+
+**Verification:**
+
+`node --check app.js` → `syntax OK`
+
+`node test/pricing.test.js` (actual output):
+```
+0 bars -> ₹0 (expected ₹0) OK
+1 bars -> ₹149 (expected ₹149) OK
+2 bars -> ₹298 (expected ₹298) OK
+3 bars -> ₹399 (expected ₹399) OK
+4 bars -> ₹548 (expected ₹548) OK
+5 bars -> ₹697 (expected ₹697) OK
+6 bars -> ₹798 (expected ₹798) OK
+7 bars -> ₹947 (expected ₹947) OK
+wa.me link OK: https://wa.me/919396857360?text=Hi!%202%C3%97%20Neem
+All pricing checks passed.
+```
+All five required cases (1→149, 3→399, 4→548, 6→798, 7→947) pass.
+
+Live — polled after push:
+```
+LIVE after ~75s: order-bar markup + orderTotal() in app.js served
+```
