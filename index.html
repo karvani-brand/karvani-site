@@ -225,6 +225,20 @@
     <div class="footer-brand">Amma's Ayurvedic Soaps &middot; <span data-config="whatsappDisplay">+91-9396857360</span></div>
   </footer>
 
+  <!-- spacer so the sticky bar never covers the last content -->
+  <div id="order-bar-spacer" hidden></div>
+
+  <!-- STICKY ORDER BAR -->
+  <div class="order-bar" id="order-bar" hidden>
+    <div class="order-bar-row">
+      <div>
+        <div class="order-bar-total"><span id="cart-count">0 bars</span> &middot; &#8377;<span id="cart-total">0</span></div>
+        <div class="order-bar-bundle" id="bundle-note" hidden>3-bar bundle price applied &check;</div>
+      </div>
+      <a class="btn-send" id="send-order-link" href="#" target="_blank" rel="noopener">Send order on WhatsApp</a>
+    </div>
+  </div>
+
 </div>
 <script src="app.js"></script>
 </body>

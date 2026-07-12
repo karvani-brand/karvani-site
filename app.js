@@ -11,16 +11,75 @@ const CONFIG = {
 };
 // ============================================================
 
+const UNIT_PRICE = 149;
+const BUNDLE_PRICE = 399; // any 3 bars
+
+// Every 3 bars = one ₹399 bundle, remainder at ₹149 each.
+function orderTotal(bars) {
+  const bundles = Math.floor(bars / 3);
+  return bundles * BUNDLE_PRICE + (bars % 3) * UNIT_PRICE;
+}
+
 function buildWhatsAppLink(message) {
   const digits = CONFIG.WHATSAPP_NUMBER.replace(/[^\d]/g, '');
   return `https://wa.me/${digits}?text=${encodeURIComponent(message)}`;
 }
 
-document.getElementById('product-grid').addEventListener('click', (e) => {
-  const btn = e.target.closest('[data-action="add"]');
-  if (!btn) return;
-  const card = btn.closest('.product-card');
-  const name = card.dataset.name;
-  const message = `Hi! I'd like to order:\n1× ${name}\n\nTotal: ₹149\nCode: ${CONFIG.PROMO_CODE}`;
-  window.open(buildWhatsAppLink(message), '_blank', 'noopener');
-});
+if (typeof document !== 'undefined') {
+
+  const qty = {}; // product name -> bar count
+
+  // Inject a qty stepper into each card (hidden until qty > 0).
+  document.querySelectorAll('.product-card').forEach((card) => {
+    card.querySelector('.btn-add').insertAdjacentHTML('afterend',
+      `<div class="qty-stepper" hidden>
+        <button class="qty-btn qty-dec" type="button" data-action="dec" aria-label="Remove one">&minus;</button>
+        <span class="qty-label">0 in order</span>
+        <button class="qty-btn qty-inc" type="button" data-action="inc" aria-label="Add one">+</button>
+      </div>`);
+  });
+
+  function render() {
+    let totalBars = 0;
+    const lines = [];
+    document.querySelectorAll('.product-card').forEach((card) => {
+      const name = card.dataset.name;
+      const n = qty[name] || 0;
+      totalBars += n;
+      if (n > 0) lines.push(`${n}× ${name}`);
+      card.querySelector('.btn-add').hidden = n > 0;
+      const stepper = card.querySelector('.qty-stepper');
+      stepper.hidden = n === 0;
+      stepper.querySelector('.qty-label').textContent = `${n} in order`;
+    });
+
+    const bar = document.getElementById('order-bar');
+    const spacer = document.getElementById('order-bar-spacer');
+    bar.hidden = totalBars === 0;
+    spacer.hidden = totalBars === 0;
+    if (totalBars === 0) return;
+
+    const total = orderTotal(totalBars);
+    document.getElementById('cart-count').textContent = totalBars === 1 ? '1 bar' : `${totalBars} bars`;
+    document.getElementById('cart-total').textContent = total;
+    document.getElementById('bundle-note').hidden = totalBars < 3;
+    const msg = `Hi! I'd like to order:\n${lines.join('\n')}\n\nTotal: ₹${total}\nCode: ${CONFIG.PROMO_CODE}`;
+    document.getElementById('send-order-link').href = buildWhatsAppLink(msg);
+  }
+
+  document.getElementById('product-grid').addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-action]');
+    if (!btn) return;
+    const name = btn.closest('.product-card').dataset.name;
+    const delta = btn.dataset.action === 'dec' ? -1 : 1; // add & inc both +1
+    qty[name] = Math.max(0, (qty[name] || 0) + delta);
+    if (qty[name] === 0) delete qty[name];
+    render();
+  });
+
+}
+
+// Node-only export so pricing logic is unit-checkable: `node test/pricing.test.js`
+if (typeof module !== 'undefined') {
+  module.exports = { orderTotal, buildWhatsAppLink, CONFIG, UNIT_PRICE, BUNDLE_PRICE };
+}

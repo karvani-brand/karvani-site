@@ -16,6 +16,8 @@
 
 * { box-sizing: border-box; }
 
+[hidden] { display: none !important; }
+
 ::selection { background: oklch(85% 0.05 145); }
 
 body {
@@ -275,6 +277,100 @@ a:hover { color: var(--link-hover); }
 
 .btn-add:hover {
   background: var(--btn-bg-hover);
+}
+
+/* ---- Qty stepper (swapped in for .btn-add once qty > 0) ---- */
+
+.qty-stepper {
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: oklch(94% 0.02 145);
+  border-radius: 100px;
+  padding: 4px;
+}
+
+.qty-btn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.qty-dec {
+  background: var(--card-bg);
+  color: var(--leaf-dark);
+}
+
+.qty-inc {
+  background: var(--btn-bg);
+  color: var(--card-bg);
+}
+
+.qty-label {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--heading);
+}
+
+/* ---- Sticky order bar ---- */
+
+#order-bar-spacer { height: 96px; }
+
+.order-bar {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 560px;
+  background: var(--card-bg);
+  border-top: 1px solid var(--card-border);
+  box-shadow: 0 -6px 24px rgba(0, 0, 0, 0.1);
+  padding: 12px 20px 16px;
+  z-index: 50;
+}
+
+.order-bar-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.order-bar-total {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--heading);
+}
+
+.order-bar-bundle {
+  font-size: 11px;
+  font-weight: 700;
+  color: oklch(50% 0.1 145);
+  margin-top: 1px;
+}
+
+.btn-send {
+  flex-shrink: 0;
+  background: var(--btn-bg);
+  color: var(--card-bg);
+  font-weight: 700;
+  font-size: 14px;
+  padding: 13px 20px;
+  border-radius: 100px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-send:hover {
+  background: var(--btn-bg-hover);
+  color: var(--card-bg);
 }
 
 /* ---- Testimonials ---- */
