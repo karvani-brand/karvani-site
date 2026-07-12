@@ -1,27 +1,29 @@
 # STATE.md — Amma's Ayurvedic Soaps site
 
 ## What's built
-- Phase 1 (walking skeleton) — done, live, verified.
-  - `index.html`, `style.css`, `app.js` at repo root (static site, no build step).
-  - Header: leaf logo (inline SVG) + wordmark.
-  - One product card (Charcoal): image, name, ingredients, description, price/MRP, "Add to order" button.
-  - `app.js` has a `CONFIG` object (WhatsApp number, promo code, UPI ID, payee name, feedback form URL, Google Form URL) and a `buildWhatsAppLink()` helper.
-  - "Add to order" opens a prefilled `wa.me` link with an itemized message + promo code.
-  - Deployed via GitHub Pages from `main` branch root. Live at https://karvani-brand.github.io/soap-store/
+- **All phases (1–7) complete.** Site is live end to end at https://karvani-brand.github.io/soap-store/
+- Phase 1 — walking skeleton: header + one card + working wa.me link.
+- Phase 2 — full static layout: every design section in order (hero, terracotta promo banner, 7 product cards with images/captions, testimonials, made-by-hand, how-to-order + UPI card, footer), design palette/typography in `style.css`.
+- Phase 3 — order builder: qty steppers per card, sticky order bar (count, total, bundle badge, prefilled wa.me send link), bundle pricing `floor(n/3)*399 + (n%3)*149` as pure `orderTotal()`, unit-checked in `test/pricing.test.js` (0–7 bars, all pass).
+- Phase 4 — testimonials swipe row: `min-width: 210px` on cards so the design's x-mandatory scroll-snap actually engages on phones.
+- Phase 5 — CONFIG→DOM wiring: `data-config` spans (promo code, UPI ID, payee, footer number), general WhatsApp CTA, placeholder-aware feedback/Google-Form links (stay `#` until CONFIG filled).
+- Phase 6 — mobile polish: sticky bar fits 360px (≤380px media query), `scroll-padding-left` snap alignment, `loading="lazy"` on 9 below-fold images, theme-color meta. Sticky bar (~72px) never covers content (96px spacer).
+- Phase 7 — docs: `README.md` (technical), `ORDER_GUIDE.md` (non-technical operator). `BUILD_REPORT.md` holds per-phase verification evidence.
 
 ## Current phase
-- Phase 1 complete. Next up: **Phase 2 — full static layout** (all sections from the design in order, all 7 product cards, images wired, full color/type from design). Not started.
+- Build complete. Only launch-day CONFIG values remain (below).
 
 ## Decisions made
-- Real repo root is `E:\Dev\personal\soap-store` (not the `./design-handoff`, `./assets/images` paths from the original request — those are subfolders here).
-- `soap-store/assets/images/` (10 files, matches design's `uploads/` folder, typo-fixed filename for orange-peel-goat-milk) is the single source of truth for product/process images. `soap-store-assets/` (sibling dir, outside this repo) is staging only — not used.
-- `CONFIG.WHATSAPP_NUMBER` = `+91-9396857360` and `CONFIG.PROMO_CODE` = `AMMA20` are treated as real launch values (confirmed with user), not placeholders — they were already baked into the design handoff as defaults.
-- Still-placeholder CONFIG values needing launch-day input: `UPI_ID`, `FEEDBACK_FORM_URL`, `GOOGLE_FORM_URL`.
-- Design-handoff HTML (`design-handoff/ayurvedic-soap-catalog/project/Ayurvedic Soap Catalog.dc.html`) already contains full working prototype logic (all 7 products, bundle pricing formula, 3 testimonials) — treat it as the reference source for content/copy/math when building later phases, not just visual reference.
-- Bundle pricing formula (verified against required test cases 1→149, 3→399, 4→548, 6→798, 7→947): `UNIT=149, BUNDLE=399; bundles = floor(n/3); remainder = n%3; total = bundles*BUNDLE + remainder*UNIT`.
-- GitHub Pages source: `main` branch, root — already enabled by user in repo settings before Phase 1.
+- Real repo root is `E:\Dev\personal\soap-store`; `assets/images/` is the image source of truth; `design-handoff/` is visual/copy reference only, not served.
+- `CONFIG.WHATSAPP_NUMBER` = `+91-9396857360` and `CONFIG.PROMO_CODE` = `AMMA20` are real launch values.
+- Bundle pricing formula verified: 1→149, 3→399, 4→548, 6→798, 7→947 (see BUILD_REPORT Phase 3).
+- GitHub Pages source: `main` branch, root. Every push deploys in ~60–75s.
+- Static text uses `data-config="..."` hooks overwritten from `CONFIG` on load — edit `app.js` CONFIG only, never the HTML copy.
+- Testimonial cards deviate from the design's `33.333%` flex-basis with `min-width: 210px` — the design's own scroll-snap is dead code without it (cards would be ~100px on phones).
+- `.claude/settings.local.json` briefly tracked in commit f44de7c; untracked + gitignored in 1ee540c.
 
-## Open items
-- Phases 2–7 not started (full layout, order builder + bundle math unit checks, testimonials swipe row, UPI/Google Form sections, mobile polish pass, README.md + ORDER_GUIDE.md docs).
-- Google Form, Sheet, and Apps Script email trigger are being built outside this session (Google account work) — their URLs stay as CONFIG placeholders until supplied.
-- UPI ID not yet provided — placeholder `[UPI_ID]` in `CONFIG`.
+## Open items (launch blockers — all are CONFIG edits in app.js + push)
+- `UPI_ID` — placeholder `[UPI_ID]`; also swap `.upi-qr` placeholder box in `index.html` for a real QR image.
+- `FEEDBACK_FORM_URL` — placeholder; "Share your experience" link stays dead until filled.
+- `GOOGLE_FORM_URL` — placeholder; "Order via Google Form" link stays dead until filled.
+- Google Form / Sheet / Apps Script email trigger being built outside this repo (Google account work).

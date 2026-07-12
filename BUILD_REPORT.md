@@ -106,3 +106,31 @@ Live — polled after push:
 ```
 LIVE after ~75s: CONFIG wiring served in app.js
 ```
+
+---
+
+## Phase 6 — Mobile polish (commit 6440b66)
+
+**Built:** ≤380px media query on the sticky bar (smaller send-button font/padding, tighter bar padding) — before it, the bar row needed ~339px of the 320px available at 360px viewports; `scroll-padding-left: 20px` so snapped testimonial cards align with the section padding; `loading="lazy"` on all 9 below-fold images (hero stays eager); `theme-color` meta.
+
+**Verification:**
+
+Sticky-bar coverage (all values from style.css):
+```
+order bar height ~72px vs spacer 96px -> NEVER COVERS ✓
+```
+
+Order-bar row fit across the required 360–430px range (after fix):
+```
+360px: bar row needs ~315px of 332px -> fits ✓
+375px: bar row needs ~315px of 347px -> fits ✓
+380px: bar row needs ~315px of 352px -> fits ✓
+390px: bar row needs ~339px of 350px -> fits ✓
+430px: bar row needs ~339px of 390px -> fits ✓
+```
+Product card text column at 360/390/430px: 182/212/252px — flex column, no overflow (`min-width: 0` on body).
+
+Live — polled after push:
+```
+LIVE after ~30s: 380px media query + lazy images served
+```
