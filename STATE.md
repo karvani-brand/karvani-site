@@ -10,6 +10,8 @@
 - Phase 6 — mobile polish: sticky bar fits 360px (≤380px media query), `scroll-padding-left` snap alignment, `loading="lazy"` on 9 below-fold images, theme-color meta. Sticky bar (~72px) never covers content (96px spacer).
 - Phase 7 — docs: `README.md` (technical), `ORDER_GUIDE.md` (non-technical operator). `BUILD_REPORT.md` holds per-phase verification evidence.
 
+- Phase 8 — real assets: Amma's portrait into the hero founder-quote slot (replacing the `hero-soaps-crop.png` stand-in), real UPI QR into the payment card (replacing the striped placeholder box). Both cropped square from source with `scratchpad/prep_assets.py` (QR block auto-detected at 719×719, re-padded with a 10% quiet zone).
+
 ## Current phase
 - Build complete. Only launch-day CONFIG values remain (below).
 
@@ -23,7 +25,7 @@
 - `.claude/settings.local.json` briefly tracked in commit f44de7c; untracked + gitignored in 1ee540c.
 
 ## Open items (launch blockers — all are CONFIG edits in app.js + push)
-- `UPI_ID` — placeholder `[UPI_ID]`; also swap `.upi-qr` placeholder box in `index.html` for a real QR image.
+- ~~`UPI_ID` placeholder~~ — done: `CONFIG.UPI_ID` = `shambavibl-1@okicici`. Added `CONFIG.UPI_PAYEE_NAME` = `moglipuram shambavi` (the bank account holder shown on the QR) as a field separate from `CONFIG.PAYEE_NAME` ("Amma's Ayurvedic Soaps", the business brand used in the WhatsApp CTA) — they're different real-world values that happened to share one config key before.
 - `FEEDBACK_FORM_URL` — placeholder; "Share your experience" link stays dead until filled.
 - `GOOGLE_FORM_URL` — placeholder; "Order via Google Form" link stays dead until filled.
 - Google Form / Sheet / Apps Script email trigger being built outside this repo (Google account work).

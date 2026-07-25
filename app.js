@@ -4,7 +4,8 @@
 const CONFIG = {
   WHATSAPP_NUMBER: '+91-9396857360',
   PROMO_CODE: 'AMMA20',
-  UPI_ID: '[UPI_ID]',
+  UPI_ID: 'shambavibl-1@okicici',
+  UPI_PAYEE_NAME: 'moglipuram shambavi', // bank account holder shown on the QR, distinct from the business name below
   PAYEE_NAME: "Amma's Ayurvedic Soaps",
   FEEDBACK_FORM_URL: '[FEEDBACK_FORM_URL]',
   GOOGLE_FORM_URL: '[GOOGLE_FORM_URL]'
@@ -36,7 +37,7 @@ if (typeof document !== 'undefined') {
   const configText = {
     promoCode: CONFIG.PROMO_CODE,
     upiId: CONFIG.UPI_ID,
-    payeeName: CONFIG.PAYEE_NAME,
+    payeeName: CONFIG.UPI_PAYEE_NAME,
     whatsappDisplay: CONFIG.WHATSAPP_NUMBER
   };
   document.querySelectorAll('[data-config]').forEach((el) => {

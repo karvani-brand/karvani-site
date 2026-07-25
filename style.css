@@ -520,18 +520,9 @@ a:hover { color: var(--link-hover); }
 .upi-qr {
   width: 160px;
   height: 160px;
-  background-image: repeating-linear-gradient(45deg, oklch(90% 0.02 130), oklch(90% 0.02 130) 6px, oklch(97% 0.01 90) 6px, oklch(97% 0.01 90) 12px);
   border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.upi-qr span {
-  font-family: monospace;
-  font-size: 11px;
-  text-align: center;
-  color: oklch(35% 0.02 145 / 0.7);
+  background: #fff;
+  object-fit: contain;
 }
 
 .upi-payee {
