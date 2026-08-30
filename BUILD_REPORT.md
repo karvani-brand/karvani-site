@@ -1,6 +1,6 @@
-# BUILD_REPORT — Amma's Ayurvedic Soaps
+﻿# BUILD_REPORT — Amma's Ayurvedic Soaps
 
-Evidence log, one entry per phase. Live URL: https://karvani-brand.github.io/soap-store/
+Evidence log, one entry per phase. Live URL: https://karvani.in
 
 ---
 
@@ -25,7 +25,7 @@ OK  assets/images/sheabutter-coconut-oil.png
 product cards: 7
 ```
 
-Live — polled https://karvani-brand.github.io/soap-store/ after push:
+Live — polled https://karvani.in after push:
 ```
 LIVE after ~60s: found 'What Friends Are Saying'
 live product cards: 7

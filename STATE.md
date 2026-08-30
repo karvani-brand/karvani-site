@@ -1,7 +1,7 @@
-# STATE.md — Amma's Ayurvedic Soaps site
+﻿# STATE.md — Amma's Ayurvedic Soaps site
 
 ## What's built
-- **All phases (1–7) complete.** Site is live end to end at https://karvani-brand.github.io/soap-store/
+- **All phases (1–7) complete.** Site is live end to end at https://karvani.in
 - Phase 1 — walking skeleton: header + one card + working wa.me link.
 - Phase 2 — full static layout: every design section in order (hero, terracotta promo banner, 7 product cards with images/captions, testimonials, made-by-hand, how-to-order + UPI card, footer), design palette/typography in `style.css`.
 - Phase 3 — order builder: qty steppers per card, sticky order bar (count, total, bundle badge, prefilled wa.me send link), bundle pricing `floor(n/3)*399 + (n%3)*149` as pure `orderTotal()`, unit-checked in `test/pricing.test.js` (0–7 bars, all pass).

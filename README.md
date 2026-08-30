@@ -1,8 +1,8 @@
-# Amma's Ayurvedic Soaps — catalog site
+﻿# Amma's Ayurvedic Soaps — catalog site
 
 Single-page product catalog + WhatsApp order flow. Static HTML/CSS/vanilla JS, no build step, no dependencies.
 
-**Live:** https://karvani-brand.github.io/soap-store/
+**Live:** https://karvani.in
 
 ## Files
 

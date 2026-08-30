@@ -1,10 +1,10 @@
-# Order Guide — for whoever answers the WhatsApp
+﻿# Order Guide — for whoever answers the WhatsApp
 
 You don't need to know anything about websites to run this. Customers browse the page, tap buttons, and the site writes their order message for them. Your job starts when that message lands on WhatsApp (+91-9396857360).
 
 ## What a customer sees
 
-1. They open https://karvani-brand.github.io/soap-store/ on their phone.
+1. They open https://karvani.in on their phone.
 2. They tap **Add to order** on the soaps they want (and **+** / **−** to change quantity).
 3. A green bar appears at the bottom showing their total. The site does the math: **₹149 per bar, any 3 bars for ₹399** — automatically. 4 bars = ₹548 (one ₹399 bundle + one ₹149 bar), 6 bars = ₹798, 7 bars = ₹947.
 4. They tap **Send order on WhatsApp**. WhatsApp opens with a ready-made message.
