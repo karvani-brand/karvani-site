@@ -1,4 +1,4 @@
-﻿# Amma's Ayurvedic Soaps — catalog site
+﻿# KARVANI — catalog site
 
 Single-page product catalog + WhatsApp order flow. Static HTML/CSS/vanilla JS, no build step, no dependencies.
 
@@ -33,7 +33,7 @@ Edit the `CONFIG` block at the top of `app.js`, commit, push:
 2. `FEEDBACK_FORM_URL` — currently `[FEEDBACK_FORM_URL]`; the "Share your experience" link stays dead (`#`) until filled.
 3. `GOOGLE_FORM_URL` — currently `[GOOGLE_FORM_URL]`; the "Order via Google Form" link stays dead (`#`) until filled.
 
-`WHATSAPP_NUMBER` (+91-9396857360) and `PROMO_CODE` (AMMA20) are already real values.
+`WHATSAPP_NUMBER` (+91-9396857360) and `PROMO_CODE` (KARVANI20) are already real values.
 
 ## Checks
 

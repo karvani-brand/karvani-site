@@ -1,4 +1,4 @@
-﻿# BUILD_REPORT — Amma's Ayurvedic Soaps
+﻿# BUILD_REPORT — KARVANI
 
 Evidence log, one entry per phase. Live URL: https://karvani.in
 

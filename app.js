@@ -3,10 +3,10 @@
 // ============================================================
 const CONFIG = {
   WHATSAPP_NUMBER: '+91-9396857360',
-  PROMO_CODE: 'AMMA20',
+  PROMO_CODE: 'KARVANI20',
   UPI_ID: 'shambavibl-1@okicici',
   UPI_PAYEE_NAME: 'moglipuram shambavi', // bank account holder shown on the QR, distinct from the business name below
-  PAYEE_NAME: "Amma's Ayurvedic Soaps",
+  PAYEE_NAME: 'KARVANI',
   FEEDBACK_FORM_URL: '[FEEDBACK_FORM_URL]',
   GOOGLE_FORM_URL: '[GOOGLE_FORM_URL]'
 };

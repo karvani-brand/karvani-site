@@ -19,7 +19,7 @@ Hi! I'd like to order:
 1× Charcoal
 
 Total: ₹399
-Code: AMMA20
+Code: KARVANI20
 ```
 
 The total in the message is already correct — the site calculated it.
@@ -34,7 +34,7 @@ That's the whole flow. If someone messages without the ready-made format ("do yo
 
 ## The promo code
 
-`AMMA20` in the message just tells you they came from the website. The bundle pricing is already in their total — you don't need to discount anything further unless you want to.
+`KARVANI20` in the message just tells you they came from the website. The bundle pricing is already in their total — you don't need to discount anything further unless you want to.
 
 ## Things that need a one-time setup (ask the site owner)
 
