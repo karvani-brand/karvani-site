@@ -29,4 +29,3 @@
 - `FEEDBACK_FORM_URL` — placeholder; "Share your experience" link stays dead until filled.
 - `GOOGLE_FORM_URL` — placeholder; "Order via Google Form" link stays dead until filled.
 - Google Form / Sheet / Apps Script email trigger being built outside this repo (Google account work).
-
