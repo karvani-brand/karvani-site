@@ -55,8 +55,14 @@ offence under the Trade Marks Act. Revisit only when the certificate issues.
 ### Testimonials
 
 Only real, attributable quotes from actual customers.
-Current testimonials on the site are verified genuine — leave them intact.
 Never invent, embellish or add a placeholder testimonial.
+
+Known exception, deliberate: two current testimonials contain
+skin-benefit language ("smoother and softer", "keeps my skin calm").
+These are genuine quotes, kept for now while selling to a close circle.
+A published testimonial is legally the brand's own claim, so these must
+be replaced before any public launch — with quotes about scent, lather
+or how long a bar lasts. Do not add any new claim-carrying testimonial.
 
 ## Rules
 
