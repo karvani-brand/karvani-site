@@ -507,7 +507,7 @@ a:hover { color: var(--link-hover); }
 /* ---- Made by hand ---- */
 
 .made-by-hand {
-  padding: 28px 20px;
+  padding: 28px 20px 14px;
 }
 
 .made-by-hand .section-title { margin-bottom: 12px; }
@@ -535,7 +535,7 @@ a:hover { color: var(--link-hover); }
 /* ---- How to order ---- */
 
 .how-to-order {
-  padding: 30px 20px 24px;
+  padding: 14px 20px 24px;
 }
 
 .steps {
