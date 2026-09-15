@@ -1,24 +1,26 @@
+/* Hues track the logo: teal 185 for the circle, gold 78 for the ring and K/V. */
 :root {
   --cream: oklch(97% 0.015 90);
-  --leaf-dark: oklch(30% 0.05 145);
-  --ink: oklch(28% 0.02 145);
-  --ink-soft: oklch(35% 0.02 145);
-  --ink-mute: oklch(45% 0.02 145);
-  --heading: oklch(25% 0.05 145);
+  --leaf-dark: oklch(30% 0.05 185);
+  --ink: oklch(28% 0.02 185);
+  --ink-soft: oklch(35% 0.02 185);
+  --ink-mute: oklch(45% 0.02 185);
+  --heading: oklch(25% 0.05 185);
   --card-bg: oklch(99% 0.01 90);
   --card-border: oklch(90% 0.02 100);
-  --btn-bg: oklch(40% 0.07 145);
-  --btn-bg-hover: oklch(33% 0.07 145);
-  --accent: oklch(60% 0.14 40); /* terracotta */
-  --link: oklch(45% 0.1 145);
-  --link-hover: oklch(38% 0.1 145);
+  --btn-bg: oklch(38% 0.06 185);
+  --btn-bg-hover: oklch(31% 0.06 185);
+  --link: oklch(45% 0.09 185);
+  --link-hover: oklch(38% 0.09 185);
+  --teal-deep: #0e3937;
+  --gold: #e4b15c;
 }
 
 * { box-sizing: border-box; }
 
 [hidden] { display: none !important; }
 
-::selection { background: oklch(85% 0.05 145); }
+::selection { background: oklch(85% 0.05 185); }
 
 body {
   margin: 0;
@@ -41,26 +43,33 @@ a:hover { color: var(--link-hover); }
 /* ---- Hero ---- */
 
 .hero {
-  padding: 28px 24px 24px;
-  background: linear-gradient(180deg, oklch(93% 0.03 130) 0%, oklch(97% 0.015 90) 100%);
+  padding: 26px 24px 24px;
+  background: linear-gradient(180deg, oklch(93% 0.028 190) 0%, oklch(97% 0.015 90) 100%);
+  text-align: center;
 }
 
 .site-header {
   display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 18px;
+  justify-content: center;
+  margin-bottom: 16px;
 }
 
-.site-header svg { flex-shrink: 0; }
+.site-logo {
+  width: 92px;
+  height: 92px;
+  display: block;
+  filter: drop-shadow(0 4px 14px oklch(30% 0.05 185 / 0.28));
+}
 
-.wordmark {
-  font-family: 'Lora', serif;
-  font-weight: 700;
-  font-size: 15px;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-  color: var(--leaf-dark);
+/* Gold hairline echoing the logo ring. */
+.hero-title::after {
+  content: "";
+  display: block;
+  width: 46px;
+  height: 2px;
+  margin: 14px auto 0;
+  border-radius: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
 }
 
 .hero-title {
@@ -89,9 +98,10 @@ a:hover { color: var(--link-hover); }
   gap: 14px;
   align-items: center;
   background: oklch(99% 0.01 90 / 0.6);
-  border: 1px solid oklch(85% 0.03 130);
+  border: 1px solid oklch(85% 0.03 190);
   border-radius: 14px;
   padding: 12px 14px;
+  text-align: left;
 }
 
 .hero-quote img {
@@ -105,7 +115,7 @@ a:hover { color: var(--link-hover); }
 .hero-quote-text {
   font-size: 12.5px;
   line-height: 1.5;
-  color: oklch(38% 0.03 145);
+  color: oklch(38% 0.03 185);
   font-style: italic;
 }
 
@@ -120,8 +130,8 @@ a:hover { color: var(--link-hover); }
 /* ---- Promo banner ---- */
 
 .promo-banner {
-  background: var(--accent);
-  color: var(--card-bg);
+  background: var(--teal-deep);
+  color: var(--gold);
   padding: 11px 24px;
   font-size: 13px;
   font-weight: 700;
@@ -132,6 +142,7 @@ a:hover { color: var(--link-hover); }
 .promo-code {
   text-decoration: underline;
   text-underline-offset: 2px;
+  text-decoration-color: oklch(78% 0.11 78 / 0.5);
 }
 
 /* ---- Products ---- */
@@ -160,8 +171,8 @@ a:hover { color: var(--link-hover); }
   display: flex;
   align-items: center;
   gap: 8px;
-  background: oklch(93% 0.03 130);
-  border: 1px dashed oklch(55% 0.08 145);
+  background: oklch(93% 0.03 190);
+  border: 1px dashed oklch(55% 0.08 185);
   border-radius: 10px;
   padding: 9px 12px;
   margin-bottom: 18px;
@@ -170,7 +181,7 @@ a:hover { color: var(--link-hover); }
   color: var(--leaf-dark);
 }
 
-.bundle-star { font-size: 15px; }
+.bundle-star { font-size: 15px; color: var(--gold); }
 
 .product-grid {
   display: flex;
@@ -237,14 +248,14 @@ a:hover { color: var(--link-hover); }
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.03em;
-  color: oklch(50% 0.08 145);
+  color: oklch(50% 0.08 185);
 }
 
 .product-description {
   font-size: 12.5px;
   line-height: 1.5;
   margin: 0;
-  color: oklch(40% 0.02 145);
+  color: oklch(40% 0.02 185);
 }
 
 .product-price {
@@ -262,7 +273,7 @@ a:hover { color: var(--link-hover); }
 
 .price-mrp {
   font-size: 13px;
-  color: oklch(55% 0.02 145);
+  color: oklch(55% 0.02 185);
   text-decoration: line-through;
 }
 
@@ -291,7 +302,7 @@ a:hover { color: var(--link-hover); }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: oklch(94% 0.02 145);
+  background: oklch(94% 0.02 185);
   border-radius: 100px;
   padding: 4px;
 }
@@ -357,7 +368,7 @@ a:hover { color: var(--link-hover); }
 .order-bar-bundle {
   font-size: 11px;
   font-weight: 700;
-  color: oklch(50% 0.1 145);
+  color: oklch(50% 0.1 185);
   margin-top: 1px;
 }
 
@@ -394,7 +405,7 @@ a:hover { color: var(--link-hover); }
 
 .testimonials {
   padding: 30px 20px;
-  background: oklch(93% 0.025 120);
+  background: oklch(93% 0.025 190);
 }
 
 .testimonial-row {
@@ -423,7 +434,7 @@ a:hover { color: var(--link-hover); }
 .testimonial-quote {
   font-size: 12.5px;
   line-height: 1.5;
-  color: oklch(32% 0.02 145);
+  color: oklch(32% 0.02 185);
   font-style: italic;
 }
 
@@ -431,7 +442,7 @@ a:hover { color: var(--link-hover); }
   font-size: 11.5px;
   font-weight: 700;
   margin-top: 8px;
-  color: oklch(45% 0.06 145);
+  color: oklch(45% 0.06 185);
 }
 
 .feedback-link {
@@ -468,7 +479,7 @@ a:hover { color: var(--link-hover); }
   font-size: 13px;
   line-height: 1.5;
   margin: 12px 0 0;
-  color: oklch(38% 0.02 145);
+  color: oklch(38% 0.02 185);
 }
 
 /* ---- How to order ---- */
@@ -494,8 +505,8 @@ a:hover { color: var(--link-hover); }
   width: 26px;
   height: 26px;
   border-radius: 50%;
-  background: var(--accent);
-  color: white;
+  background: var(--gold);
+  color: var(--teal-deep);
   font-weight: 800;
   font-size: 13px;
   display: flex;
@@ -579,11 +590,11 @@ a:hover { color: var(--link-hover); }
 .footer-note {
   font-size: 11.5px;
   line-height: 1.6;
-  color: oklch(50% 0.02 145);
+  color: oklch(50% 0.02 185);
 }
 
 .footer-brand {
   font-size: 11px;
   margin-top: 8px;
-  color: oklch(55% 0.02 145);
+  color: oklch(55% 0.02 185);
 }
