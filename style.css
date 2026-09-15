@@ -79,6 +79,11 @@ a:hover { color: var(--link-hover); }
   color: var(--ink-soft);
 }
 
+.hero-intro strong {
+  font-weight: 700;
+  color: var(--heading);
+}
+
 .hero-quote {
   display: flex;
   gap: 14px;
