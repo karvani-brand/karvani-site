@@ -30,6 +30,8 @@
 
 - 2026-09-14 — masthead `™` glyph replaced by circled "TM" (`.brandmark .tm`, true circle, top-aligned with the cap height); Sunnipindi ingredients corrected to Sunnipindi Powder / goat milk / orange essential oil / vitamin E (almond oil and glycerin dropped); "Red Sandalwood" removed from the Sandalwood card; single-ingredient cards renamed with "Soap" (Manjishta, Papaya, Sandalwood, Charcoal, Rose) — paired names (Neem & Tulasi etc.) left alone; footer gained 🧿 KARVANI 🧿 and the made-by-hand → how-to-order gap was halved.
 
+- 2026-09-14 — shipping is **not** included in any listed price. Stated in three places: the catalog sub-line, a `+ shipping` line in the sticky order bar (`.ship-note`), and the prefilled WhatsApp message ("Total: ₹N + shipping"). Delivery charge is quoted manually on WhatsApp — no shipping calculation in code. Worst-case sticky-bar height with both notes = 93px, still under the 96px `#order-bar-spacer`.
+
 ## Current phase
 
 - Build complete. Only launch-day CONFIG values remain (below).

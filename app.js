@@ -96,7 +96,7 @@ if (typeof document !== 'undefined') {
     document.getElementById('cart-count').textContent = totalBars === 1 ? '1 bar' : `${totalBars} bars`;
     document.getElementById('cart-total').textContent = total;
     document.getElementById('bundle-note').hidden = prices.filter((p) => p === UNIT_PRICE).length < 3;
-    const msg = `Hi! I'd like to order:\n${lines.join('\n')}\n\nTotal: ₹${total}\nCode: ${CONFIG.PROMO_CODE}`;
+    const msg = `Hi! I'd like to order:\n${lines.join('\n')}\n\nTotal: ₹${total} + shipping\nCode: ${CONFIG.PROMO_CODE}`;
     document.getElementById('send-order-link').href = buildWhatsAppLink(msg);
   }
 
