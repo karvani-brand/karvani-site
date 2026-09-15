@@ -13,12 +13,15 @@ const CONFIG = {
 // ============================================================
 
 const UNIT_PRICE = 149;
-const BUNDLE_PRICE = 399; // any 3 bars
+const BUNDLE_PRICE = 399; // any 3 UNIT_PRICE bars
 
-// Every 3 bars = one ₹399 bundle, remainder at ₹149 each.
-function orderTotal(bars) {
-  const bundles = Math.floor(bars / 3);
-  return bundles * BUNDLE_PRICE + (bars % 3) * UNIT_PRICE;
+// Takes one price per bar ordered. The bundle covers UNIT_PRICE bars only —
+// dearer bars (Sandalwood, Saffron) are charged at their own price, so three
+// of them can never be had for the bundle rate.
+function orderTotal(prices) {
+  const standard = prices.filter((p) => p === UNIT_PRICE).length;
+  const premium = prices.filter((p) => p !== UNIT_PRICE).reduce((sum, p) => sum + p, 0);
+  return Math.floor(standard / 3) * BUNDLE_PRICE + (standard % 3) * UNIT_PRICE + premium;
 }
 
 function buildWhatsAppLink(message) {
@@ -68,29 +71,31 @@ if (typeof document !== 'undefined') {
   });
 
   function render() {
-    let totalBars = 0;
+    const prices = [];
     const lines = [];
     document.querySelectorAll('.product-card').forEach((card) => {
       const name = card.dataset.name;
+      const price = Number(card.dataset.price);
       const n = qty[name] || 0;
-      totalBars += n;
-      if (n > 0) lines.push(`${n}× ${name}`);
+      for (let i = 0; i < n; i++) prices.push(price);
+      if (n > 0) lines.push(`${n}× ${name} — ₹${price * n}`);
       card.querySelector('.btn-add').hidden = n > 0;
       const stepper = card.querySelector('.qty-stepper');
       stepper.hidden = n === 0;
       stepper.querySelector('.qty-label').textContent = `${n} in order`;
     });
 
+    const totalBars = prices.length;
     const bar = document.getElementById('order-bar');
     const spacer = document.getElementById('order-bar-spacer');
     bar.hidden = totalBars === 0;
     spacer.hidden = totalBars === 0;
     if (totalBars === 0) return;
 
-    const total = orderTotal(totalBars);
+    const total = orderTotal(prices);
     document.getElementById('cart-count').textContent = totalBars === 1 ? '1 bar' : `${totalBars} bars`;
     document.getElementById('cart-total').textContent = total;
-    document.getElementById('bundle-note').hidden = totalBars < 3;
+    document.getElementById('bundle-note').hidden = prices.filter((p) => p === UNIT_PRICE).length < 3;
     const msg = `Hi! I'd like to order:\n${lines.join('\n')}\n\nTotal: ₹${total}\nCode: ${CONFIG.PROMO_CODE}`;
     document.getElementById('send-order-link').href = buildWhatsAppLink(msg);
   }
