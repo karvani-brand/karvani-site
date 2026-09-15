@@ -14,6 +14,7 @@ const CONFIG = {
 
 const UNIT_PRICE = 149;
 const BUNDLE_PRICE = 399; // any 3 UNIT_PRICE bars
+const FREE_SHIP_MIN = 10;   // bars; below this, shipping is quoted on WhatsApp
 
 // Takes one price per bar ordered. The bundle covers UNIT_PRICE bars only —
 // dearer bars (Sandalwood, Saffron) are charged at their own price, so three
@@ -96,7 +97,9 @@ if (typeof document !== 'undefined') {
     document.getElementById('cart-count').textContent = totalBars === 1 ? '1 bar' : `${totalBars} bars`;
     document.getElementById('cart-total').textContent = total;
     document.getElementById('bundle-note').hidden = prices.filter((p) => p === UNIT_PRICE).length < 3;
-    const msg = `Hi! I'd like to order:\n${lines.join('\n')}\n\nTotal: ₹${total} + shipping\nCode: ${CONFIG.PROMO_CODE}`;
+    const freeShip = totalBars >= FREE_SHIP_MIN;
+    document.querySelector('.ship-note').textContent = freeShip ? 'Free shipping ✓' : '+ shipping';
+    const msg = `Hi! I'd like to order:\n${lines.join('\n')}\n\nTotal: ₹${total} ${freeShip ? '(free shipping)' : '+ shipping'}\nCode: ${CONFIG.PROMO_CODE}`;
     document.getElementById('send-order-link').href = buildWhatsAppLink(msg);
   }
 

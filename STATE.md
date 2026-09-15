@@ -32,6 +32,8 @@
 
 - 2026-09-14 — shipping is **not** included in any listed price. Stated in three places: the catalog sub-line, a `+ shipping` line in the sticky order bar (`.ship-note`), and the prefilled WhatsApp message ("Total: ₹N + shipping"). Delivery charge is quoted manually on WhatsApp — no shipping calculation in code. Worst-case sticky-bar height with both notes = 93px, still under the 96px `#order-bar-spacer`.
 
+- 2026-09-14 — free shipping on 10+ bars (`FREE_SHIP_MIN = 10` in `app.js`): the sticky bar's ship note flips to "Free shipping ✓" and the WhatsApp total reads "(free shipping)" instead of "+ shipping". Stated positively as a threshold to hit, not as a fee. Products header order is now title → 3-bar bundle callout → sub-line.
+
 ## Current phase
 
 - Build complete. Only launch-day CONFIG values remain (below).

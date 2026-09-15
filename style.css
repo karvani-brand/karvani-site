@@ -214,7 +214,7 @@ a:hover { color: var(--link-hover); }
   transform: rotate(45deg);
 }
 
-.products .section-title { margin-bottom: 4px; }
+.products .section-title { margin-bottom: 10px; }
 
 .products-sub {
   font-size: 13px;
@@ -230,7 +230,7 @@ a:hover { color: var(--link-hover); }
   border: 1px dashed oklch(62% 0.1 80);
   border-radius: 10px;
   padding: 9px 12px;
-  margin-bottom: 18px;
+  margin-bottom: 10px;
   font-size: 12.5px;
   font-weight: 700;
   color: var(--leaf-dark);
