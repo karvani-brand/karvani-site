@@ -14,7 +14,7 @@
   --link-hover: oklch(38% 0.09 185);
   --teal-deep: #0e3937;
   --gold: #e4b15c;
-  --gold-lite: #ecd07d; /* bright enough to clear AA on the lightest teal */
+  --gold-lite: #f0d68c; /* bright enough to clear AA at the gradient's peak */
   --gold-mid: #d1a63b;
   --gold-deep: #c89a2b;
   --bronze: #3d2c04; /* logo lettering, darkened to clear AA on the gold band */
@@ -49,9 +49,35 @@ a:hover { color: var(--link-hover); }
 
 .hero { text-align: center; }
 
+/* Full-bleed gold band carrying the wordmark. */
 .hero-band {
-  background: linear-gradient(135deg, var(--gold-lite) 0%, var(--gold-mid) 55%, var(--gold-deep) 100%);
-  padding: 13px 24px 15px;
+  background: linear-gradient(135deg, var(--gold-lite) 0%, var(--gold-mid) 52%, var(--gold-deep) 100%);
+  padding: 19px 20px 16px;
+  text-align: center;
+}
+
+/* Tall K and V echo the drawn mark. */
+.brandmark {
+  font-family: 'Lora', serif;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--bronze);
+}
+
+.brandmark .cap { font-size: 1.28em; }
+
+.brandmark .tm {
+  font-size: 0.42em;
+  vertical-align: 0.95em;
+  letter-spacing: 0;
+  margin-left: 3px;
+}
+
+.brand-tagline {
+  margin-top: 10px;
   font-size: 9.5px;
   font-weight: 800;
   letter-spacing: 0.3em;
@@ -59,20 +85,12 @@ a:hover { color: var(--link-hover); }
   color: var(--bronze);
 }
 
-/* Teal lightens toward the mark so the top of the page isn't a flat slab. */
+/* Wide light range top-to-bottom; the peak is capped by what gold can sit on. */
 .hero-main {
-  background: linear-gradient(180deg, oklch(43% 0.055 185) 0%, oklch(31% 0.05 185) 100%);
-  padding: 0 24px 20px;
-}
-
-/* Pulled up to straddle the band; the ivory ring keeps gold off gold. */
-.site-logo {
-  width: 96px;
-  height: 96px;
-  display: block;
-  margin: -48px auto 14px;
-  border-radius: 50%;
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.38), 0 0 0 4px var(--cream);
+  background:
+    radial-gradient(135% 108% at 50% 0%, oklch(45% 0.07 185) 0%, oklch(33% 0.055 185) 45%, transparent 78%),
+    oklch(22% 0.04 185);
+  padding: 26px 24px 22px;
 }
 
 /* Gold hairline echoing the logo ring. */
