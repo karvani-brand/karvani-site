@@ -14,8 +14,10 @@
   --link-hover: oklch(38% 0.09 185);
   --teal-deep: #0e3937;
   --gold: #e4b15c;
-  --gold-lite: #e3c05f;
+  --gold-lite: #ecd07d; /* bright enough to clear AA on the lightest teal */
   --gold-mid: #d1a63b;
+  --gold-deep: #c89a2b;
+  --bronze: #3d2c04; /* logo lettering, darkened to clear AA on the gold band */
   --on-dark: oklch(90% 0.02 185);
 }
 
@@ -45,34 +47,32 @@ a:hover { color: var(--link-hover); }
 
 /* ---- Hero ---- */
 
-/* Gold reads as precious on a dark ground, not as a field of its own. */
-.hero {
-  padding: 26px 24px 18px;
-  background:
-    radial-gradient(120% 90% at 50% 0%, oklch(36% 0.05 185) 0%, transparent 70%),
-    var(--teal-deep);
-  text-align: center;
-}
+.hero { text-align: center; }
 
-.site-header {
-  margin-bottom: 12px;
-}
-
-.site-logo {
-  width: 100px;
-  height: 100px;
-  display: block;
-  margin: 0 auto;
-  filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.45));
-}
-
-.site-tagline {
-  margin-top: 9px;
+.hero-band {
+  background: linear-gradient(135deg, var(--gold-lite) 0%, var(--gold-mid) 55%, var(--gold-deep) 100%);
+  padding: 13px 24px 15px;
   font-size: 9.5px;
   font-weight: 800;
-  letter-spacing: 0.26em;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: var(--gold-lite);
+  color: var(--bronze);
+}
+
+/* Teal lightens toward the mark so the top of the page isn't a flat slab. */
+.hero-main {
+  background: linear-gradient(180deg, oklch(43% 0.055 185) 0%, oklch(31% 0.05 185) 100%);
+  padding: 0 24px 20px;
+}
+
+/* Pulled up to straddle the band; the ivory ring keeps gold off gold. */
+.site-logo {
+  width: 96px;
+  height: 96px;
+  display: block;
+  margin: -48px auto 14px;
+  border-radius: 50%;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.38), 0 0 0 4px var(--cream);
 }
 
 /* Gold hairline echoing the logo ring. */
