@@ -28,6 +28,8 @@
 
 - 2026-09-14 — hero ingredient line reworded (neem, goat milk, sandalwood, saffron, tulsi, rose; `by&nbsp;hand.` kept on one line at 360px); "hand-poured in small batches" dropped from all 12 card descriptions; product thumb 110px→132px; made-by-hand photos replaced with `ingredients-flatlay.jpg` + `soap-batch.jpg` (bottom 17% cropped off), old `soap-ingredients.png`/`making-process-ingredients.png` deleted; Sunnipindi card labelled "Sunnipindi (Ubtan Soap)".
 
+- 2026-09-14 — masthead `™` glyph replaced by circled "TM" (`.brandmark .tm`, true circle, top-aligned with the cap height); Sunnipindi ingredients corrected to Sunnipindi Powder / goat milk / orange essential oil / vitamin E (almond oil and glycerin dropped); "Red Sandalwood" removed from the Sandalwood card; single-ingredient cards renamed with "Soap" (Manjishta, Papaya, Sandalwood, Charcoal, Rose) — paired names (Neem & Tulasi etc.) left alone; footer gained 🧿 KARVANI 🧿 and the made-by-hand → how-to-order gap was halved.
+
 ## Current phase
 
 - Build complete. Only launch-day CONFIG values remain (below).
