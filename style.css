@@ -71,16 +71,16 @@ a:hover { color: var(--link-hover); }
 
 .brandmark .tm {
   display: inline-block;
-  width: 1.85em;
-  height: 1.85em;
-  line-height: 1.75em;
+  width: 2.35em;
+  height: 2.35em;
+  line-height: 2.25em;
   text-align: center;
   font-family: 'Mulish', system-ui, sans-serif;
-  font-size: 0.26em;
+  font-size: 0.21em;
   font-weight: 900;
   letter-spacing: 0;
-  vertical-align: 2.35em;
-  margin-left: 4px;
+  vertical-align: 3.25em;
+  margin-left: -2px;
   border: 1.5px solid currentColor;
   border-radius: 50%;
 }
