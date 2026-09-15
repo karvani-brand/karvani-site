@@ -249,7 +249,7 @@ a:hover { color: var(--link-hover); }
 }
 
 .product-image {
-  width: 110px;
+  width: 132px;
   flex-shrink: 0;
   position: relative;
   overflow: hidden;

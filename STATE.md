@@ -26,6 +26,8 @@
 - Phase 7 — docs: `README.md` (technical), `ORDER_GUIDE.md` (non-technical operator). `BUILD_REPORT.md` holds per-phase verification evidence.
 - Phase 8 — real assets: Sambavi's portrait into the hero founder-quote slot (replacing the `hero-soaps-crop.png` stand-in), real UPI QR into the payment card (replacing the striped placeholder box). Both cropped square from source with `scratchpad/prep_assets.py` (QR block auto-detected at 719×719, re-padded with a 10% quiet zone).
 
+- 2026-09-14 — hero ingredient line reworded (neem, goat milk, sandalwood, saffron, tulsi, rose; `by&nbsp;hand.` kept on one line at 360px); "hand-poured in small batches" dropped from all 12 card descriptions; product thumb 110px→132px; made-by-hand photos replaced with `ingredients-flatlay.jpg` + `soap-batch.jpg` (bottom 17% cropped off), old `soap-ingredients.png`/`making-process-ingredients.png` deleted; Sunnipindi card labelled "Sunnipindi (Ubtan Soap)".
+
 ## Current phase
 
 - Build complete. Only launch-day CONFIG values remain (below).
