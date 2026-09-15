@@ -77,17 +77,18 @@ a:hover { color: var(--link-hover); }
   text-align: center;
   font-family: 'Mulish', system-ui, sans-serif;
   font-size: 0.26em;
-  font-weight: 700;
+  font-weight: 900;
   letter-spacing: 0;
-  vertical-align: 1.6em;
-  margin-left: 5px;
-  border: 1px solid currentColor;
+  vertical-align: 2.35em;
+  margin-left: 4px;
+  border: 1.5px solid currentColor;
   border-radius: 50%;
 }
 
 .brand-tagline {
   margin-top: 10px;
-  font-size: 9.5px;
+  padding-right: 20px;
+  font-size: 10.5px;
   font-weight: 800;
   letter-spacing: 0.3em;
   text-transform: uppercase;
