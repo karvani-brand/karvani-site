@@ -57,12 +57,26 @@ offence under the Trade Marks Act. Revisit only when the certificate issues.
 Only real, attributable quotes from actual customers.
 Never invent, embellish or add a placeholder testimonial.
 
-Known exception, deliberate: two current testimonials contain
-skin-benefit language ("smoother and softer", "keeps my skin calm").
+**Never publish a pigmentation, even-tone, fairness or complexion claim
+in a testimonial — permanent rule, no exceptions.** Indra's original
+review contained a sentence about pigmentation and even-toned skin. It is
+deliberately omitted from the live quote and must never be added back:
+under Indian law a claim to change pigmentation is a drug claim, not a
+cosmetic one, and needs a drug licence — and a published testimonial is
+legally the brand's own claim, whoever said it. This holds even though
+the sentence is a genuine customer's own words.
+
+Known exception, deliberate: the live quotes still carry skin-benefit
+language — "smoother and softer" (Sravani), "gentle" plus "leaves the
+skin feeling clean, soft, and refreshed" (Indra), "gentle" (Karthik).
 These are genuine quotes, kept for now while selling to a close circle.
 A published testimonial is legally the brand's own claim, so these must
 be replaced before any public launch — with quotes about scent, lather
 or how long a bar lasts. Do not add any new claim-carrying testimonial.
+
+Closed 2026-09-18: no testimonial references a discontinued product any
+more. Indra's quote used to mention the body scrub, removed from the
+catalog in 9a0ed1f; her quote was replaced wholesale.
 
 ## Rules
 

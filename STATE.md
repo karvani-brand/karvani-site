@@ -34,6 +34,8 @@
 
 - 2026-09-14 — free shipping on 10+ bars (`FREE_SHIP_MIN = 10` in `app.js`): the sticky bar's ship note flips to "Free shipping ✓" and the WhatsApp total reads "(free shipping)" instead of "+ shipping". Stated positively as a threshold to hit, not as a fee. Products header order is now title → 3-bar bundle callout → sub-line.
 
+- 2026-09-18 — testimonials: Indra's quote replaced wholesale (it referenced the body scrub, a product dropped from the catalog in 9a0ed1f); Karthik's restored as a claim-light version ("the only soap I use now — it's gentle and I like how it feels", replacing "keeps my skin calm"); Sravani's untouched. The pigmentation/even-tone sentence in Indra's original review is deliberately left out — a pigmentation claim is a drug claim under Indian law and needs a drug licence; now a permanent rule in `CLAUDE.md`. Verified at a real 360px viewport (headless Chrome, CDP device metrics): 3 cards × 210px, scroll-snap-type `x mandatory` engaged, every probed scrollLeft rests on a snap point (0 / 220 / 330), no text clipping, no horizontal page overflow. All three quotes still carry skin-benefit wording and must be swapped before a public launch.
+
 ## Current phase
 
 - Build complete. Only launch-day CONFIG values remain (below).
