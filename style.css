@@ -476,25 +476,14 @@ a:hover { color: var(--link-hover); }
 
 .testimonial-row {
   display: flex;
+  flex-direction: column;
   gap: 10px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-padding-left: 20px; /* snapped cards align with the section padding */
-  padding-bottom: 4px;
-  margin: 0 -20px;
-  padding-left: 20px;
-  padding-right: 20px;
 }
 
 .testimonial-card {
   background: var(--card-bg);
   border-radius: 14px;
   padding: 14px;
-  flex: 0 0 calc(33.333% - 7px);
-  min-width: 210px; /* keeps quotes readable on phones; row scroll-snaps instead of squeezing */
-  scroll-snap-align: start;
-  display: flex;
-  flex-direction: column;
 }
 
 .testimonial-quote {

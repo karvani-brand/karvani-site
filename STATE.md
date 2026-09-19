@@ -36,6 +36,8 @@
 
 - 2026-09-18 — testimonials: Indra's quote replaced wholesale (it referenced the body scrub, a product dropped from the catalog in 9a0ed1f); Karthik's restored as a claim-light version ("the only soap I use now — it's gentle and I like how it feels", replacing "keeps my skin calm"); Sravani's untouched. The pigmentation/even-tone sentence in Indra's original review is deliberately left out — a pigmentation claim is a drug claim under Indian law and needs a drug licence; now a permanent rule in `CLAUDE.md`. Verified at a real 360px viewport (headless Chrome, CDP device metrics): 3 cards × 210px, scroll-snap-type `x mandatory` engaged, every probed scrollLeft rests on a snap point (0 / 220 / 330), no text clipping, no horizontal page overflow. All three quotes still carry skin-benefit wording and must be swapped before a public launch.
 
+- 2026-09-18 — testimonials swipe row replaced by a vertical stack (`.testimonial-row` is now `flex-direction: column; gap: 10px`; `.testimonial-card` is down to background/radius/padding). Cards are content-height instead of all stretching to the tallest, and full width (320px at 360px viewport) so long quotes reflow shorter. Measured at 360px: Indra 164px, Karthik 89px, Sravani 89px (was 220/220/220), section 493px tall, no nested scroll in either axis, no clipping, no horizontal page overflow. Show-more/`<details>` capping deliberately not built — expected ceiling is 5–8 testimonials, which all fit.
+
 ## Current phase
 
 - Build complete. Only launch-day CONFIG values remain (below).
@@ -47,7 +49,7 @@
 - Bundle pricing formula verified: 1→149, 3→399, 4→548, 6→798, 7→947 (see BUILD_REPORT Phase 3).
 - GitHub Pages source: `main` branch, root. Every push deploys in ~60–75s.
 - Static text uses `data-config="..."` hooks overwritten from `CONFIG` on load — edit `app.js` CONFIG only, never the HTML copy.
-- Testimonial cards deviate from the design's `33.333%` flex-basis with `min-width: 210px` — the design's own scroll-snap is dead code without it (cards would be ~100px on phones).
+- Testimonials are a **vertical stack**, not the design's horizontal swipe row (changed 2026-09-18). The row's `33.333%` flex-basis, `min-width: 210px`, `scroll-snap-type: x mandatory`, `scroll-padding-left` and `margin: 0 -20px` are all gone. Reason: in a flex row every card stretches to the tallest, so a long quote forced ~110px of dead space onto every short one. Do not reintroduce a nested vertical scroll box here — an inner vertical scroller inside a vertically scrolling page steals the swipe on phones and hides content.
 - `.claude/settings.local.json` briefly tracked in commit f44de7c; untracked + gitignored in 1ee540c.
 
 ## Open items (launch blockers — all are CONFIG edits in app.js + push)
